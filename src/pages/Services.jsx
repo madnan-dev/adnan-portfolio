@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function Services() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -8,123 +8,125 @@ export default function Services() {
       id: 1,
       title: 'Workflow Automation',
       category: 'automation',
-      description: 'Streamline your business operations by connecting APIs, webhooks, and third-party apps with custom n8n pipelines.',
+      description: 'Streamline operations by connecting APIs, webhooks, and third-party apps into efficient, reliable systems.',
       icon: '⚡',
-      features: ['Custom Webhooks', 'API Integration', 'Error Handling Workflows'],
+      features: ['Custom Webhooks', 'API Integration', 'Error Handling'],
     },
     {
       id: 2,
       title: 'Agentic AI Systems',
       category: 'ai',
-      description: 'Deploy intelligent autonomous agents capable of handling complex tasks, data analysis, and client interactions.',
+      description: 'Deploy smart automation agents that can reason, route tasks, and support business workflows intelligently.',
       icon: '🤖',
-      features: ['LLM Integration', 'Autonomous Routing', 'Smart Decision Making'],
+      features: ['LLM Integration', 'Autonomous Routing', 'Smart Decision Support'],
     },
     {
       id: 3,
-      title: 'Frontend Web Development',
+      title: 'Frontend Development',
       category: 'web',
-      description: 'Build fast, scalable, and modern user interfaces using React, Vite, and clean vanilla Tailwind CSS.',
+      description: 'Create fast, elegant, and responsive user interfaces using modern React and Tailwind-based architecture.',
       icon: '💻',
-      features: ['Responsive Layouts', 'Single-File Components', 'Optimized Performance'],
+      features: ['Responsive Layouts', 'Clean Components', 'Optimized Performance'],
     },
     {
       id: 4,
       title: 'CRM & Email Integration',
       category: 'automation',
-      description: 'Automate client onboarding, email replies, and CRM record updates directly from your application dashboards.',
+      description: 'Automate onboarding, messaging, and CRM updates so your team can focus on growth rather than repetitive work.',
       icon: '📧',
-      features: ['Gmail API Sync', 'Automated Auto-Replies', 'Lead Management'],
+      features: ['Gmail Sync', 'Auto Replies', 'Lead Management'],
     },
     {
       id: 5,
       title: 'AI Chatbot Integration',
       category: 'ai',
-      description: 'Integrate custom conversational assistants into your websites and internal messaging tools for 24/7 support.',
+      description: 'Add conversational assistants to your website or internal tools for responsive, round-the-clock support.',
       icon: '💬',
-      features: ['Context Awareness', 'Multi-Model Support', 'Real-time Responses'],
+      features: ['Context Awareness', 'Real-Time Responses', 'Multi-Model Support'],
     },
     {
       id: 6,
-      title: 'Performance & SEO Optimization',
+      title: 'Performance & SEO',
       category: 'web',
-      description: 'Audit and boost your web applications loading speeds, semantic structures, and search engine visibility.',
+      description: 'Improve page speed, structure, and visibility so your product performs better in both user experience and search.',
       icon: '🚀',
-      features: ['Speed Auditing', 'Clean Asset Management', 'Mobile First Design'],
+      features: ['Speed Audits', 'Mobile-First UX', 'SEO Structure'],
     },
   ];
 
-  const filteredServices = selectedCategory === 'all' 
-    ? servicesData 
-    : servicesData.filter(service => service.category === selectedCategory);
+  const filteredServices =
+    selectedCategory === 'all' ? servicesData : servicesData.filter((service) => service.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans py-16 px-6 sm:px-12">
-      
-      {/* --- HEADER SECTION --- */}
-      <section className="max-w-7xl mx-auto text-center mb-16">
-        <span className="text-indigo-400 font-semibold tracking-widest uppercase text-sm">
-          What We Offer
-        </span>
-        <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
-          High-Performance <span className="text-indigo-500">Services & Solutions</span>
-        </h1>
-        <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
-          Tailored engineering, intelligent automation systems, and scalable modern web architecture designed for your success.
-        </p>
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <section className="relative overflow-hidden px-6 py-20 sm:px-8 lg:px-20 lg:py-28">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.18),_transparent_38%),radial-gradient(circle_at_85%_20%,_rgba(59,130,246,0.16),_transparent_30%)]" />
+        <div className="mx-auto max-w-6xl text-center">
+          <span className="mb-4 inline-flex rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
+            Services
+          </span>
+          <h1 className="text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
+            Professional solutions for{' '}
+            <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
+              modern growth.
+            </span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
+            From automation to web experiences, I build services that are practical, scalable, and designed to impress.
+          </p>
 
-        {/* --- INTERACTIVE CATEGory FILTER BUTTONS --- */}
-        <div className="flex flex-wrap justify-center gap-3 mt-8">
-          {['all', 'automation', 'ai', 'web'].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2 rounded-xl text-sm font-medium transition-all capitalize ${
-                selectedCategory === cat
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25'
-                  : 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
-              }`}
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            {['all', 'automation', 'ai', 'web'].map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`rounded-full px-5 py-2 text-sm font-semibold capitalize transition ${
+                  selectedCategory === cat
+                    ? 'bg-sky-500 text-slate-950'
+                    : 'bg-slate-900/70 text-slate-300 hover:bg-slate-800 hover:text-white'
+                }`}
+              >
+                {cat === 'all' ? 'All Services' : cat}
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-6 py-8 sm:px-8 lg:px-20 lg:pb-16">
+        <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {filteredServices.map((service) => (
+            <div
+              key={service.id}
+              className="flex h-full flex-col rounded-[1.5rem] border border-slate-800 bg-slate-900/70 p-8 shadow-xl shadow-slate-950/40 transition duration-300 hover:-translate-y-1 hover:border-sky-500/40"
             >
-              {cat === 'all' ? 'All Services' : cat}
-            </button>
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-sky-500/25 bg-sky-500/10 text-2xl">
+                {service.icon}
+              </div>
+              <h3 className="text-2xl font-semibold text-white">{service.title}</h3>
+              <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">{service.description}</p>
+
+              <ul className="mt-6 space-y-2 border-t border-slate-800 pt-6">
+                {service.features.map((feature) => (
+                  <li key={feature} className="flex items-center text-sm text-slate-300">
+                    <span className="mr-2 h-2 w-2 rounded-full bg-sky-400" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* --- SERVICES GRID SECTION --- */}
-      <section className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredServices.map((service) => (
-          <div 
-            key={service.id}
-            className="group bg-slate-800/40 p-8 rounded-2xl border border-slate-700/60 hover:border-indigo-500/60 transition-all duration-300 flex flex-col justify-between hover:-translate-y-1.5 shadow-xl"
-          >
-            <div>
-              <div className="w-14 h-14 bg-indigo-600/20 border border-indigo-500/30 rounded-xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                {service.icon}
-              </div>
-              <h3 className="text-2xl font-bold text-white mb-3">{service.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed mb-6">{service.description}</p>
-            </div>
-
-            <div>
-              <div className="border-t border-slate-700/50 pt-4 mb-6">
-                <ul className="space-y-2">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="text-xs text-slate-300 flex items-center">
-                      <span className="w-1.5 h-1.5 bg-indigo-400 rounded-full mr-2"></span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <button className="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-indigo-600 text-slate-200 hover:text-white font-medium text-sm transition-colors border border-slate-700 hover:border-transparent">
-                Learn More
-              </button>
-            </div>
-          </div>
-        ))}
+      <section className="px-6 py-10 sm:px-8 lg:px-20">
+        <div className="mx-auto max-w-5xl rounded-[2rem] border border-sky-500/20 bg-sky-500/10 px-8 py-10 text-center shadow-lg shadow-sky-950/20 lg:px-12">
+          <h2 className="text-3xl font-bold text-white sm:text-4xl">Need a custom solution for your business?</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-300">
+            I can help you turn your idea into a polished website, product, or automation workflow built around your goals.
+          </p>
+        </div>
       </section>
-
     </div>
   );
 }

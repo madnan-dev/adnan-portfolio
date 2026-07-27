@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function Blogs() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -11,10 +11,10 @@ export default function Blogs() {
       category: 'automation',
       date: 'Jul 20, 2026',
       readTime: '5 min read',
-      excerpt: 'Learn how to connect custom APIs, trigger automated webhooks, and handle error nodes gracefully in production environments.',
+      excerpt: 'Learn how to connect custom APIs, trigger automated webhooks, and handle errors gracefully in production workflows.',
       image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80',
       featured: true,
-      author: 'Automation Specialist'
+      author: 'Automation Specialist',
     },
     {
       id: 2,
@@ -22,10 +22,10 @@ export default function Blogs() {
       category: 'ai',
       date: 'Jul 15, 2026',
       readTime: '7 min read',
-      excerpt: 'Discover how AI agents use dynamic routing, context evaluation, and LLMs to execute complex decision-making processes.',
+      excerpt: 'Discover how AI agents use dynamic routing, context evaluation, and LLMs to make smart decisions.',
       image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?w=600&auto=format&fit=crop&q=80',
       featured: false,
-      author: 'AI Developer'
+      author: 'AI Developer',
     },
     {
       id: 3,
@@ -33,10 +33,10 @@ export default function Blogs() {
       category: 'web',
       date: 'Jul 10, 2026',
       readTime: '4 min read',
-      excerpt: 'Best practices for writing clean, modular React components using utility-first CSS styling without bloated frameworks.',
+      excerpt: 'Best practices for building clean, modular React interfaces with utility-first styling at scale.',
       image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&auto=format&fit=crop&q=80',
       featured: false,
-      author: 'Frontend Lead'
+      author: 'Frontend Lead',
     },
     {
       id: 4,
@@ -44,10 +44,10 @@ export default function Blogs() {
       category: 'automation',
       date: 'Jul 05, 2026',
       readTime: '6 min read',
-      excerpt: 'A step-by-step guide to building an inbox management panel that categorizes and auto-replies to prospective clients.',
+      excerpt: 'A practical guide to building inbox management flows that categorize and reply to leads automatically.',
       image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&auto=format&fit=crop&q=80',
       featured: false,
-      author: 'Workflow Engineer'
+      author: 'Workflow Engineer',
     },
     {
       id: 5,
@@ -55,102 +55,94 @@ export default function Blogs() {
       category: 'web',
       date: 'Jun 28, 2026',
       readTime: '5 min read',
-      excerpt: 'Tips on asset loading, semantic markup, and structure optimizations for fast page renders and seamless UX.',
+      excerpt: 'Tips on asset loading, semantic markup, and structure optimizations for faster, smoother experiences.',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=80',
       featured: false,
-      author: 'Web Architect'
-    }
+      author: 'Web Architect',
+    },
   ];
 
-  // Search & Category Filtering Logic
   const filteredBlogs = blogsData.filter((blog) => {
     const matchesCategory = selectedCategory === 'all' || blog.category === selectedCategory;
-    const matchesSearch = blog.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          blog.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch =
+      blog.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      blog.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
-  const featuredBlog = blogsData.find((b) => b.featured);
+  const featuredBlog = blogsData.find((blog) => blog.featured);
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 font-sans py-16 px-6 sm:px-12">
-      
-      {/* --- HEADER SECTION --- */}
-      <section className="max-w-7xl mx-auto text-center mb-12">
-        <span className="text-indigo-400 font-semibold tracking-widest uppercase text-sm">
-          Insights & Articles
-        </span>
-        <h1 className="mt-3 text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
-          Latest <span className="text-indigo-500">Blogs & Tutorials</span>
-        </h1>
-        <p className="mt-4 text-lg text-slate-400 max-w-2xl mx-auto">
-          Deep dives into web development, autonomous AI agents, and workflow automation strategies.
-        </p>
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      <section className="relative overflow-hidden px-6 py-20 sm:px-8 lg:px-20 lg:py-28">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.18),_transparent_38%),radial-gradient(circle_at_85%_20%,_rgba(59,130,246,0.16),_transparent_30%)]" />
+        <div className="mx-auto max-w-6xl text-center">
+          <span className="mb-4 inline-flex rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
+            Insights & Articles
+          </span>
+          <h1 className="text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
+            Thoughtful writing for{' '}
+            <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
+              modern builders.
+            </span>
+          </h1>
+          <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
+            Explore practical ideas on web development, automation, AI, and creating products that genuinely perform well.
+          </p>
 
-        {/* --- SEARCH BAR & FILTERS --- */}
-        <div className="mt-8 max-w-xl mx-auto flex flex-col sm:flex-row gap-4 items-center">
-          <div className="relative w-full">
-            <input
-              type="text"
-              placeholder="Search articles..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-slate-800 border border-slate-700/80 rounded-xl px-4 py-2.5 pl-10 text-sm text-slate-200 placeholder-slate-400 focus:outline-none focus:border-indigo-500 transition-colors"
-            />
-            <span className="absolute left-3 top-2.5 text-slate-400 text-sm">🔍</span>
+          <div className="mx-auto mt-8 flex max-w-2xl flex-col gap-3 sm:flex-row">
+            <div className="relative flex-1">
+              <input
+                type="text"
+                placeholder="Search articles..."
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+                className="w-full rounded-full border border-slate-700 bg-slate-900/80 px-4 py-3 pl-10 text-sm text-slate-200 placeholder-slate-400 focus:border-sky-500 focus:outline-none"
+              />
+              <span className="absolute left-4 top-3.5 text-slate-400">🔎</span>
+            </div>
           </div>
-        </div>
 
-        {/* --- CATEGORY TABS --- */}
-        <div className="flex flex-wrap justify-center gap-3 mt-6">
-          {['all', 'automation', 'ai', 'web'].map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2 rounded-xl text-sm font-medium transition-all capitalize ${
-                selectedCategory === cat
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25'
-                  : 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
-              }`}
-            >
-              {cat === 'all' ? 'All Articles' : cat}
-            </button>
-          ))}
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            {['all', 'automation', 'ai', 'web'].map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelectedCategory(cat)}
+                className={`rounded-full px-5 py-2 text-sm font-semibold capitalize transition ${
+                  selectedCategory === cat
+                    ? 'bg-sky-500 text-slate-950'
+                    : 'bg-slate-900/70 text-slate-300 hover:bg-slate-800 hover:text-white'
+                }`}
+              >
+                {cat === 'all' ? 'All Articles' : cat}
+              </button>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* --- FEATURED ARTICLE SPOTLIGHT --- */}
       {featuredBlog && selectedCategory === 'all' && !searchQuery && (
-        <section className="max-w-7xl mx-auto mb-16">
-          <div className="relative overflow-hidden rounded-3xl bg-slate-800/60 border border-slate-700/80 p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center shadow-2xl">
-            <div className="overflow-hidden rounded-2xl border border-slate-700/50 h-64 lg:h-80">
-              <img 
-                src={featuredBlog.image} 
-                alt={featuredBlog.title} 
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-              />
+        <section className="px-6 py-6 sm:px-8 lg:px-20">
+          <div className="mx-auto grid max-w-6xl gap-8 rounded-[2rem] border border-slate-800 bg-slate-900/70 p-8 shadow-2xl shadow-slate-950/40 lg:grid-cols-[0.95fr_1.05fr] lg:p-10">
+            <div className="overflow-hidden rounded-[1.5rem] border border-slate-800">
+              <img src={featuredBlog.image} alt={featuredBlog.title} className="h-full w-full object-cover transition duration-500 hover:scale-105" />
             </div>
 
             <div>
-              <div className="flex items-center space-x-3 text-xs text-slate-400 mb-3">
-                <span className="bg-indigo-500/20 text-indigo-400 font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-indigo-500/30">
+              <div className="mb-4 flex flex-wrap items-center gap-2 text-xs text-slate-400">
+                <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 font-semibold uppercase tracking-[0.25em] text-sky-300">
                   Featured
                 </span>
-                <span>•</span>
                 <span>{featuredBlog.date}</span>
                 <span>•</span>
                 <span>{featuredBlog.readTime}</span>
               </div>
-
-              <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 hover:text-indigo-400 transition-colors cursor-pointer">
-                {featuredBlog.title}
-              </h2>
-              <p className="text-slate-300 leading-relaxed mb-6">{featuredBlog.excerpt}</p>
-              
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-slate-400 font-medium">By {featuredBlog.author}</span>
-                <button className="px-5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold rounded-xl shadow-lg transition-all">
-                  Read Article →
+              <h2 className="text-3xl font-bold text-white sm:text-4xl">{featuredBlog.title}</h2>
+              <p className="mt-4 text-lg leading-8 text-slate-300">{featuredBlog.excerpt}</p>
+              <div className="mt-6 flex items-center justify-between border-t border-slate-800 pt-4">
+                <span className="text-sm text-slate-400">By {featuredBlog.author}</span>
+                <button className="rounded-full bg-sky-500 px-5 py-2 text-sm font-semibold text-slate-950 transition hover:bg-sky-400">
+                  Read Article
                 </button>
               </div>
             </div>
@@ -158,74 +150,49 @@ export default function Blogs() {
         </section>
       )}
 
-      {/* --- BLOGS GRID --- */}
-      <section className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredBlogs.length > 0 ? (
-          filteredBlogs.map((blog) => (
-            <article 
-              key={blog.id}
-              className="group bg-slate-800/40 rounded-2xl border border-slate-700/60 overflow-hidden hover:border-indigo-500/60 transition-all duration-300 flex flex-col justify-between hover:-translate-y-2 shadow-xl"
-            >
-              <div>
-                <div className="h-48 overflow-hidden relative">
-                  <img 
-                    src={blog.image} 
-                    alt={blog.title} 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <span className="absolute top-3 right-3 bg-slate-900/80 text-indigo-400 text-xs px-2.5 py-1 rounded-md capitalize font-medium border border-slate-700">
+      <section className="px-6 py-10 sm:px-8 lg:px-20 lg:pb-16">
+        <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {filteredBlogs.length > 0 ? (
+            filteredBlogs.map((blog) => (
+              <article key={blog.id} className="flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-slate-800 bg-slate-900/70 transition duration-300 hover:-translate-y-1 hover:border-sky-500/40">
+                <div className="relative h-48 overflow-hidden">
+                  <img src={blog.image} alt={blog.title} className="h-full w-full object-cover transition duration-500 hover:scale-110" />
+                  <span className="absolute right-3 top-3 rounded-full border border-slate-700 bg-slate-900/80 px-3 py-1 text-xs font-semibold capitalize text-sky-300">
                     {blog.category}
                   </span>
                 </div>
 
-                <div className="p-6">
-                  <div className="flex items-center space-x-2 text-xs text-slate-400 mb-3">
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="mb-3 flex items-center gap-2 text-xs text-slate-400">
                     <span>{blog.date}</span>
                     <span>•</span>
                     <span>{blog.readTime}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors cursor-pointer">
-                    {blog.title}
-                  </h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">
-                    {blog.excerpt}
-                  </p>
+                  <h3 className="text-xl font-semibold text-white">{blog.title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">{blog.excerpt}</p>
+                  <div className="mt-5 flex items-center justify-between border-t border-slate-800 pt-4">
+                    <span className="text-sm text-slate-400">{blog.author}</span>
+                    <button className="text-sm font-semibold text-sky-300 transition hover:text-sky-200">Read More</button>
+                  </div>
                 </div>
-              </div>
-
-              <div className="px-6 pb-6 pt-2 border-t border-slate-700/40 flex justify-between items-center mt-4">
-                <span className="text-xs text-slate-400">{blog.author}</span>
-                <button className="text-xs text-indigo-400 hover:text-indigo-300 font-semibold flex items-center">
-                  Read More <span className="ml-1">→</span>
-                </button>
-              </div>
-            </article>
-          ))
-        ) : (
-          <div className="col-span-full text-center py-12 text-slate-400">
-            No articles found matching your search term.
-          </div>
-        )}
+              </article>
+            ))
+          ) : (
+            <div className="col-span-full rounded-[1.5rem] border border-slate-800 bg-slate-900/70 py-12 text-center text-slate-400">
+              No articles found matching your search term.
+            </div>
+          )}
+        </div>
       </section>
 
-      {/* --- NEWSLETTER SUBSCRIPTION --- */}
-      <section className="max-w-4xl mx-auto mt-20 bg-slate-800/60 border border-slate-700/80 p-8 sm:p-12 rounded-3xl text-center shadow-2xl">
-        <h3 className="text-2xl font-bold text-white mb-2">Subscribe to our newsletter</h3>
-        <p className="text-slate-400 text-sm max-w-md mx-auto mb-6">
-          Get the latest articles, tutorials, and workflow automation tips delivered straight to your inbox.
-        </p>
-        <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <input 
-            type="email" 
-            placeholder="Enter your email" 
-            className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
-          />
-          <button className="px-6 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-xl transition-all whitespace-nowrap">
-            Subscribe
-          </button>
-        </form>
+      <section className="px-6 py-10 sm:px-8 lg:px-20">
+        <div className="mx-auto max-w-5xl rounded-[2rem] border border-sky-500/20 bg-sky-500/10 px-8 py-10 text-center shadow-lg shadow-sky-950/20 lg:px-12">
+          <h3 className="text-2xl font-bold text-white sm:text-3xl">Subscribe for fresh insights</h3>
+          <p className="mx-auto mt-3 max-w-2xl text-lg leading-8 text-slate-300">
+            Get practical articles and tips on web development, automation, and AI directly in your inbox.
+          </p>
+        </div>
       </section>
-
     </div>
   );
 }
