@@ -1,4 +1,8 @@
 import { useState } from 'react';
+import { ArrowRight, Bot, Code2, Database, Globe, MessageSquareText, Workflow } from 'lucide-react';
+import GlassCard from '../components/GlassCard';
+import SectionHeading from '../components/SectionHeading';
+import { Link } from 'react-router-dom';
 
 export default function Services() {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -8,50 +12,69 @@ export default function Services() {
       id: 1,
       title: 'Workflow Automation',
       category: 'automation',
-      description: 'Streamline operations by connecting APIs, webhooks, and third-party apps into efficient, reliable systems.',
-      icon: '⚡',
+      description: 'Streamline operations by connecting APIs, webhooks, and third-party apps into efficient, reliable systems that remove repetitive manual work.',
+      icon: Workflow,
       features: ['Custom Webhooks', 'API Integration', 'Error Handling'],
+      outcome: 'Reduce admin work and keep tasks moving without manual follow-up.',
     },
     {
       id: 2,
       title: 'Agentic AI Systems',
       category: 'ai',
       description: 'Deploy smart automation agents that can reason, route tasks, and support business workflows intelligently.',
-      icon: '🤖',
+      icon: Bot,
       features: ['LLM Integration', 'Autonomous Routing', 'Smart Decision Support'],
+      outcome: 'Add AI decision layers without sacrificing control or visibility.',
     },
     {
       id: 3,
       title: 'Frontend Development',
       category: 'web',
       description: 'Create fast, elegant, and responsive user interfaces using modern React and Tailwind-based architecture.',
-      icon: '💻',
+      icon: Code2,
       features: ['Responsive Layouts', 'Clean Components', 'Optimized Performance'],
+      outcome: 'Make your product feel credible and easier to use from the first scroll.',
     },
     {
       id: 4,
       title: 'CRM & Email Integration',
       category: 'automation',
       description: 'Automate onboarding, messaging, and CRM updates so your team can focus on growth rather than repetitive work.',
-      icon: '📧',
+      icon: Database,
       features: ['Gmail Sync', 'Auto Replies', 'Lead Management'],
+      outcome: 'Keep leads and clients updated automatically with consistent follow-through.',
     },
     {
       id: 5,
       title: 'AI Chatbot Integration',
       category: 'ai',
       description: 'Add conversational assistants to your website or internal tools for responsive, round-the-clock support.',
-      icon: '💬',
+      icon: MessageSquareText,
       features: ['Context Awareness', 'Real-Time Responses', 'Multi-Model Support'],
+      outcome: 'Offer instant help, lead capture, or internal support without extra headcount.',
     },
     {
       id: 6,
       title: 'Performance & SEO',
       category: 'web',
       description: 'Improve page speed, structure, and visibility so your product performs better in both user experience and search.',
-      icon: '🚀',
+      icon: Globe,
       features: ['Speed Audits', 'Mobile-First UX', 'SEO Structure'],
+      outcome: 'Improve discoverability and reduce friction on mobile and desktop.',
     },
+  ];
+
+  const serviceStats = [
+    { label: 'Tools connected', value: '25+' },
+    { label: 'Automation logic', value: '50+' },
+    { label: 'Deployment focus', value: 'Reliable' },
+  ];
+
+  const deliverySteps = [
+    { step: '01', title: 'Audit', text: 'Review current tools, manual steps, and business goals before building anything.' },
+    { step: '02', title: 'Prototype', text: 'Map the workflow or interface and test the key paths before rollout.' },
+    { step: '03', title: 'Implement', text: 'Connect apps, refine the UI, and harden the system against failure cases.' },
+    { step: '04', title: 'Support', text: 'Hand off with clarity so the system can be maintained, extended, or scaled.' },
   ];
 
   const filteredServices =
@@ -62,17 +85,15 @@ export default function Services() {
       <section className="relative overflow-hidden px-6 py-20 sm:px-8 lg:px-20 lg:py-28">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.18),_transparent_38%),radial-gradient(circle_at_85%_20%,_rgba(59,130,246,0.16),_transparent_30%)]" />
         <div className="mx-auto max-w-6xl text-center">
-          <span className="mb-4 inline-flex rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
-            Services
-          </span>
-          <h1 className="text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
-            Professional solutions for{' '}
+          <p className="section-kicker text-sky-300">Services</p>
+          <h1 className="section-title mt-4 text-5xl text-white sm:text-6xl lg:text-7xl">
+            Practical systems for{' '}
             <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
-              modern growth.
+              automation, AI, and product growth.
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
-            From automation to web experiences, I build services that are practical, scalable, and designed to impress.
+            I build services that are clear to buy, easy to trust, and focused on measurable business outcomes. This is for clients who want execution, not vague promises.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -80,7 +101,7 @@ export default function Services() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`rounded-full px-5 py-2 text-sm font-semibold capitalize transition ${
+                className={`rounded-full px-5 py-2 text-sm font-semibold capitalize transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70 ${
                   selectedCategory === cat
                     ? 'bg-sky-500 text-slate-950'
                     : 'bg-slate-900/70 text-slate-300 hover:bg-slate-800 hover:text-white'
@@ -94,17 +115,32 @@ export default function Services() {
       </section>
 
       <section className="px-6 py-8 sm:px-8 lg:px-20 lg:pb-16">
+        <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-3">
+          {serviceStats.map((stat) => (
+            <GlassCard key={stat.label} className="p-5 text-center">
+              <p className="text-3xl font-semibold text-white">{stat.value}</p>
+              <p className="mt-2 text-sm text-slate-400">{stat.label}</p>
+            </GlassCard>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-6 py-8 sm:px-8 lg:px-20 lg:pb-16">
         <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2 xl:grid-cols-3">
           {filteredServices.map((service) => (
-            <div
+            <GlassCard
               key={service.id}
-              className="flex h-full flex-col rounded-[1.5rem] border border-slate-800 bg-slate-900/70 p-8 shadow-xl shadow-slate-950/40 transition duration-300 hover:-translate-y-1 hover:border-sky-500/40"
+              className="group flex h-full flex-col p-8 transition duration-300 hover:-translate-y-1 hover:border-sky-400/30"
             >
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-sky-500/25 bg-sky-500/10 text-2xl">
-                {service.icon}
+              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-sky-500/25 bg-sky-500/10 text-sky-300">
+                <service.icon className="h-6 w-6" />
               </div>
               <h3 className="text-2xl font-semibold text-white">{service.title}</h3>
               <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">{service.description}</p>
+
+              <p className="mt-5 rounded-2xl border border-slate-800/80 bg-slate-950/50 px-4 py-3 text-sm leading-7 text-slate-300">
+                <span className="font-semibold text-sky-300">Outcome:</span> {service.outcome}
+              </p>
 
               <ul className="mt-6 space-y-2 border-t border-slate-800 pt-6">
                 {service.features.map((feature) => (
@@ -114,17 +150,50 @@ export default function Services() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </GlassCard>
           ))}
         </div>
       </section>
 
       <section className="px-6 py-10 sm:px-8 lg:px-20">
-        <div className="mx-auto max-w-5xl rounded-[2rem] border border-sky-500/20 bg-sky-500/10 px-8 py-10 text-center shadow-lg shadow-sky-950/20 lg:px-12">
-          <h2 className="text-3xl font-bold text-white sm:text-4xl">Need a custom solution for your business?</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-300">
-            I can help you turn your idea into a polished website, product, or automation workflow built around your goals.
-          </p>
+        <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1fr_0.9fr]">
+          <GlassCard className="p-8 lg:p-10">
+            <SectionHeading
+              kicker="How delivery works"
+              title="A process that keeps scope clear and projects moving"
+              description="This is designed for both client work and internal product support: clear discovery, controlled implementation, and a useful handoff."
+            />
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {deliverySteps.map((step) => (
+                <div key={step.step} className="rounded-2xl border border-slate-800/80 bg-slate-950/50 p-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-300">{step.step}</p>
+                  <h3 className="mt-3 text-xl font-semibold text-white">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">{step.text}</p>
+                </div>
+              ))}
+            </div>
+          </GlassCard>
+
+          <GlassCard className="flex flex-col justify-between p-8 lg:p-10">
+            <div>
+              <p className="section-kicker text-sky-300">Need a custom solution?</p>
+              <h2 className="section-title mt-4 text-4xl text-white sm:text-5xl">One-off builds, automation support, and system upgrades.</h2>
+              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+                If your business needs better routing, a more polished frontend, or AI added into an existing flow, I can adapt the work to the scope you actually need.
+              </p>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-slate-950 transition hover:bg-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70">
+                Start a Project
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/projects" className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-white/5 px-6 py-3 font-semibold text-slate-100 transition hover:border-sky-400 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70">
+                See Results
+              </Link>
+            </div>
+          </GlassCard>
         </div>
       </section>
     </div>

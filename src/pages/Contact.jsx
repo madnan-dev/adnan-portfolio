@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { ArrowRight, CheckCircle2, Clock3, Mail, MapPin, MessageSquareText, Send, Sparkles } from 'lucide-react';
+import GlassCard from '../components/GlassCard';
+import SectionHeading from '../components/SectionHeading';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -43,15 +46,42 @@ export default function Contact() {
     },
   ];
 
+  const contactOptions = [
+    {
+      title: 'Email',
+      icon: Mail,
+      text: 'Best for project briefs, scope questions, and detailed collaboration requests.',
+      value: 'contact@example.com',
+      href: 'mailto:contact@example.com',
+    },
+    {
+      title: 'Response time',
+      icon: Clock3,
+      text: 'Typical reply window is same day or next business day depending on the request.',
+      value: '< 24 hours',
+    },
+    {
+      title: 'Working style',
+      icon: Sparkles,
+      text: 'I work solo, communicate clearly, and keep delivery practical and maintainable.',
+      value: 'Direct delivery',
+    },
+  ];
+
+  const quickNotes = [
+    'n8n workflow builds',
+    'AI agent and OpenAI integrations',
+    'API automation and webhooks',
+    'Frontend pages and portfolio upgrades',
+  ];
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <section className="relative overflow-hidden px-6 py-20 sm:px-8 lg:px-20 lg:py-28">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.18),_transparent_38%),radial-gradient(circle_at_85%_20%,_rgba(59,130,246,0.16),_transparent_30%)]" />
         <div className="mx-auto max-w-6xl text-center">
-          <span className="mb-4 inline-flex rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
-            Contact
-          </span>
-          <h1 className="text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
+          <p className="section-kicker text-sky-300">Contact</p>
+          <h1 className="section-title mt-4 text-5xl text-white sm:text-6xl lg:text-7xl">
             Let’s build something{' '}
             <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
               remarkable together.
@@ -66,29 +96,44 @@ export default function Contact() {
       <section className="px-6 py-8 sm:px-8 lg:px-20">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="space-y-4">
-            <div className="rounded-[1.5rem] border border-slate-800 bg-slate-900/70 p-6">
-              <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-500/25 bg-sky-500/10 text-xl">📧</div>
-              <h3 className="text-xl font-semibold text-white">Email</h3>
-              <p className="mt-2 text-sm leading-7 text-slate-400">For project inquiries, collaborations, and custom development requests.</p>
-              <a href="mailto:contact@example.com" className="mt-4 inline-flex text-sm font-semibold text-sky-300 hover:text-sky-200">
-                contact@example.com
-              </a>
-            </div>
+            {contactOptions.map((option) => {
+              const Icon = option.icon;
 
-            <div className="rounded-[1.5rem] border border-slate-800 bg-slate-900/70 p-6">
-              <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-500/25 bg-sky-500/10 text-xl">⚡</div>
-              <h3 className="text-xl font-semibold text-white">Fast Response</h3>
-              <p className="mt-2 text-sm leading-7 text-slate-400">Automation and workflow support for teams that need quick implementation.</p>
-            </div>
+              return (
+                <GlassCard key={option.title} className="p-6">
+                  <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-500/25 bg-sky-500/10 text-sky-300">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white">{option.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-slate-400">{option.text}</p>
+                  {option.href ? (
+                    <a href={option.href} className="mt-4 inline-flex text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70">
+                      {option.value}
+                    </a>
+                  ) : (
+                    <p className="mt-4 text-sm font-semibold text-sky-300">{option.value}</p>
+                  )}
+                </GlassCard>
+              );
+            })}
 
-            <div className="rounded-[1.5rem] border border-slate-800 bg-slate-900/70 p-6">
-              <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-500/25 bg-sky-500/10 text-xl">🌍</div>
-              <h3 className="text-xl font-semibold text-white">Remote Service</h3>
-              <p className="mt-2 text-sm leading-7 text-slate-400">Available globally for web builds, automation, and product support.</p>
-            </div>
+            <GlassCard className="p-6">
+              <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-500/25 bg-sky-500/10 text-sky-300">
+                <MessageSquareText className="h-5 w-5" />
+              </div>
+              <h3 className="text-xl font-semibold text-white">What I can help with</h3>
+              <ul className="mt-4 space-y-2 text-sm text-slate-400">
+                {quickNotes.map((note) => (
+                  <li key={note} className="flex items-center gap-2">
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-emerald-300" />
+                    {note}
+                  </li>
+                ))}
+              </ul>
+            </GlassCard>
           </div>
 
-          <div className="rounded-[2rem] border border-slate-800 bg-slate-900/70 p-8 shadow-2xl shadow-slate-950/40 sm:p-10">
+          <GlassCard className="p-8 shadow-2xl shadow-slate-950/40 sm:p-10">
             {submitted ? (
               <div className="flex h-full flex-col items-center justify-center py-10 text-center">
                 <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-emerald-500/30 bg-emerald-500/10 text-3xl text-emerald-400">
@@ -101,77 +146,88 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                <SectionHeading
+                  kicker="Project intake"
+                  title="Tell me what you want to automate or improve"
+                  description="The more context you provide, the faster I can tell you what is feasible, what the scope should be, and the best next step."
+                />
+
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div>
-                    <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Your Name</label>
+                    <label htmlFor="name" className="mb-2 block text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Your Name</label>
                     <input
+                      id="name"
                       type="text"
                       name="name"
                       required
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="John Doe"
-                      className="w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-sky-500 focus:outline-none"
+                      className="focus-visible:outline-none w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-sky-500"
                     />
                   </div>
 
                   <div>
-                    <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Email Address</label>
+                    <label htmlFor="email" className="mb-2 block text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Email Address</label>
                     <input
+                      id="email"
                       type="email"
                       name="email"
                       required
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="john@example.com"
-                      className="w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-sky-500 focus:outline-none"
+                      className="focus-visible:outline-none w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-sky-500"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Subject</label>
+                  <label htmlFor="subject" className="mb-2 block text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Subject</label>
                   <input
+                    id="subject"
                     type="text"
                     name="subject"
                     required
                     value={formData.subject}
                     onChange={handleChange}
                     placeholder="Website / Automation / AI"
-                    className="w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-sky-500 focus:outline-none"
+                    className="focus-visible:outline-none w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-sky-500"
                   />
                 </div>
 
                 <div>
-                  <label className="mb-2 block text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Message</label>
+                  <label htmlFor="message" className="mb-2 block text-xs font-semibold uppercase tracking-[0.25em] text-slate-400">Message</label>
                   <textarea
+                    id="message"
                     name="message"
                     required
                     rows="5"
                     value={formData.message}
                     onChange={handleChange}
                     placeholder="Tell me about your idea or project..."
-                    className="w-full resize-none rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-sky-500 focus:outline-none"
+                    className="focus-visible:outline-none w-full resize-none rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-sky-500"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full rounded-2xl bg-sky-500 px-5 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-sky-500 px-5 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70"
                 >
+                  <Send className="h-4 w-4" />
                   Send Message
                 </button>
               </form>
             )}
-          </div>
+          </GlassCard>
         </div>
       </section>
 
       <section className="px-6 py-16 sm:px-8 lg:px-20">
-        <div className="mx-auto max-w-5xl rounded-[2rem] border border-slate-800 bg-slate-900/70 p-8 shadow-xl shadow-slate-950/40 lg:p-10">
+        <GlassCard className="mx-auto max-w-5xl p-8 shadow-xl shadow-slate-950/40 lg:p-10">
           <div className="mb-8 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">FAQ</p>
-            <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">Common questions before you reach out</h2>
+            <p className="section-kicker text-sky-300">FAQ</p>
+            <h2 className="section-title mt-3 text-4xl text-white sm:text-5xl">Common questions before you reach out</h2>
           </div>
 
           <div className="space-y-4">
@@ -179,7 +235,8 @@ export default function Contact() {
               <div key={faq.question} className="rounded-2xl border border-slate-800 bg-slate-950/70 overflow-hidden">
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="flex w-full items-center justify-between px-5 py-4 text-left text-white"
+                  className="flex w-full items-center justify-between px-5 py-4 text-left text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sky-400/70"
+                  aria-expanded={activeFaq === index}
                 >
                   <span className="font-semibold">{faq.question}</span>
                   <span className="ml-4 text-xl text-sky-300">{activeFaq === index ? '−' : '+'}</span>
@@ -189,7 +246,7 @@ export default function Contact() {
               </div>
             ))}
           </div>
-        </div>
+        </GlassCard>
       </section>
     </div>
   );
