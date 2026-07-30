@@ -30,6 +30,7 @@ export default function Projects() {
       image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80',
       featured: true,
       workflowLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/01-FbPage-post-scheduler',
+      videoLink: '#',
       metrics: 'Saved 10+ hrs/week',
       problem: 'Social content was being scheduled manually across multiple steps, which slowed publishing and caused inconsistent timing.',
       solution: 'Built an n8n workflow that accepts scheduled content, pushes it through Buffer, and routes the output to a controlled publishing queue.',
@@ -45,6 +46,7 @@ export default function Projects() {
       image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&auto=format&fit=crop&q=80',
       featured: false,
       workflowLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/02-Smart-Document-Classifier',
+      videoLink: '#',
       metrics: 'Reduced sorting by 70%',
       problem: 'Incoming files were being reviewed manually, which created delays and inconsistent categorization.',
       solution: 'Added document classification logic that detects type, routes to the correct destination, and logs the outcome for review.',
@@ -60,6 +62,7 @@ export default function Projects() {
       image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1200&auto=format&fit=crop&q=80',
       featured: false,
       workflowLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/03-serper-search-scraper',
+      videoLink: '#',
       metrics: 'Processed 250+ requests/day',
       problem: 'Search data was being collected manually, making it difficult to reuse and analyze at scale.',
       solution: 'Created a structured extraction pipeline that queries Serper, normalizes results, and outputs data for downstream use.',
@@ -167,6 +170,15 @@ export default function Projects() {
                   Read Case Study
                 </button>
                 <a
+                  href={featuredProject.videoLink || '#'}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-5 py-2.5 text-sm font-semibold text-emerald-200 transition hover:border-emerald-400 hover:bg-emerald-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70"
+                >
+                  Video Proof
+                  <ExternalLink className="h-4 w-4" />
+                </a>
+                <a
                   href={featuredProject.workflowLink}
                   target="_blank"
                   rel="noreferrer"
@@ -222,6 +234,15 @@ export default function Projects() {
                   >
                     Case Study
                   </button>
+                  <a
+                    href={project.videoLink || '#'}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2 text-sm font-semibold text-emerald-200 transition hover:border-emerald-400 hover:bg-emerald-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70"
+                  >
+                    Video Proof
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
                   <a
                     href={project.workflowLink}
                     target="_blank"
