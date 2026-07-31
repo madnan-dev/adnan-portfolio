@@ -30,7 +30,7 @@ export default function Projects() {
       image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80',
       featured: true,
       workflowLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/01-FbPage-post-scheduler',
-      videoLink: '#',
+      videoLink: 'https://www.loom.com/share/cdee95f1f4e4492c863a5c4f631b8134',
       metrics: 'Saved 10+ hrs/week',
       problem: 'Social content was being scheduled manually across multiple steps, which slowed publishing and caused inconsistent timing.',
       solution: 'Built an n8n workflow that accepts scheduled content, pushes it through Buffer, and routes the output to a controlled publishing queue.',
