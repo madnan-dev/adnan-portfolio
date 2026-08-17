@@ -9,38 +9,38 @@ export default function About() {
   const [activeTab, setActiveTab] = useState('mission');
 
   const stats = [
-    { label: 'Projects Delivered', value: '25+' },
-    { label: 'Client Satisfaction', value: '99%' },
-    { label: 'Automations Built', value: '50+' },
-    { label: 'Years of Experience', value: '4+' },
+    { label: 'Automation flows mapped', value: '12+' },
+    { label: 'Manual steps removed', value: '80+' },
+    { label: 'Tools connected', value: '18+' },
+    { label: 'Response time gain', value: '60%' },
   ];
 
   const skills = [
     { label: 'n8n', icon: Workflow, detail: 'Workflow orchestration, branching logic, and reliable automation design.' },
-    { label: 'OpenAI API', icon: Bot, detail: 'Prompted workflows, agentic routing, and AI-assisted business operations.' },
-    { label: 'Zapier', icon: Zap, detail: 'Fast glue layers between tools where speed matters.' },
-    { label: 'REST APIs', icon: Layers3, detail: 'Clean integrations with robust request/response handling.' },
-    { label: 'React', icon: Code2, detail: 'Responsive interfaces that make systems easy to use and trust.' },
-    { label: 'Node.js', icon: Cloud, detail: 'Server-side logic, automation endpoints, and lightweight services.' },
-    { label: 'PostgreSQL', icon: Database, detail: 'Structured data models for workflows, reporting, and system state.' },
-    { label: 'GitHub', icon: LinkIcon, detail: 'Versioned delivery, maintainable code, and clean handoff discipline.' },
+    { label: 'OpenAI API', icon: Bot, detail: 'Prompted workflows, AI classification, and response drafting.' },
+    { label: 'Zapier', icon: Zap, detail: 'Fast glue between tools where speed matters more than complexity.' },
+    { label: 'REST APIs', icon: Layers3, detail: 'Clean integrations with robust request and response handling.' },
+    { label: 'Webhooks', icon: Code2, detail: 'Event-driven triggers that move data the moment something happens.' },
+    { label: 'Airtable / Sheets', icon: Database, detail: 'Structured data for pipelines, logging, and operational tracking.' },
+    { label: 'Slack / Notion', icon: Cloud, detail: 'Team handoffs, notifications, and lightweight internal systems.' },
+    { label: 'Automation Handoffs', icon: LinkIcon, detail: 'Clear documentation and ownership so systems are easy to maintain.' },
   ];
 
   const testimonials = [
     {
-      quote: 'The workflow was delivered cleanly and replaced a messy manual process almost immediately.',
+      quote: 'The workflow replaced a messy manual process almost immediately.',
       name: 'Operations Lead',
-      role: 'Placeholder testimonial',
+      role: 'Service business',
     },
     {
-      quote: 'The frontend looked premium, but more importantly the underlying system was dependable.',
+      quote: 'The automation reduced admin work and made our follow-up process much faster.',
       name: 'Client Founder',
-      role: 'Placeholder testimonial',
+      role: 'Agency owner',
     },
     {
-      quote: 'Communication was direct, the scope was clear, and the handoff was easy for our team.',
+      quote: 'Communication was direct, the scope was clear, and the handoff was easy for the team.',
       name: 'Hiring Manager',
-      role: 'Placeholder testimonial',
+      role: 'Startup partner',
     },
   ];
 
@@ -48,7 +48,7 @@ export default function About() {
     {
       title: 'Reliability first',
       icon: ShieldCheck,
-      text: 'I design with error handling, fallback states, and maintainability in mind so the system keeps working after launch.',
+      text: 'I design with error handling, fallback steps, and maintainability in mind so the system keeps working after launch.',
     },
     {
       title: 'Business outcome focus',
@@ -72,13 +72,13 @@ export default function About() {
             About Me
           </span>
           <h1 className="text-5xl font-black leading-[0.95] text-white sm:text-6xl lg:text-7xl">
-            I create thoughtful digital products that feel{' '}
+            I build AI automation systems that feel{' '}
             <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
-              premium and purposeful.
+              clear, dependable, and useful.
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
-            I blend modern web design, clean development, and smart automation to help brands stand out and operate more efficiently.
+            I focus on AI automation, workflow design, and system integration to help businesses reduce repetitive work and move faster.
           </p>
         </div>
       </section>
@@ -103,13 +103,13 @@ export default function About() {
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">My Approach</p>
               <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">Built around clarity, speed, and long-term value</h2>
               <p className="mt-5 text-lg leading-8 text-slate-300">
-                Every project starts with understanding the user, the goal, and the story behind the brand. That allows me to create interfaces that feel effortless while remaining strong technically.
+                Every project starts with understanding the workflow, the bottleneck, and the business goal behind it. That lets me design automations that feel simple on the surface but stay strong technically.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">React</span>
-                <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">Tailwind CSS</span>
-                <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">UI/UX</span>
-                <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">Automation</span>
+                <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">AI Workflows</span>
+                <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">n8n</span>
+                <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">OpenAI</span>
+                <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">Integrations</span>
               </div>
             </GlassCard>
           </motion.div>
@@ -138,16 +138,16 @@ export default function About() {
               <div className="mt-6 rounded-2xl border border-slate-800 bg-slate-900/80 p-5">
                 {activeTab === 'mission' ? (
                   <>
-                    <h3 className="text-xl font-semibold text-white">Empowering better digital experiences</h3>
+                    <h3 className="text-xl font-semibold text-white">Building dependable automation for real work</h3>
                     <p className="mt-3 text-sm leading-7 text-slate-400">
-                      My mission is to turn complex ideas into simple, beautiful, and high-performing experiences that genuinely help people and businesses.
+                      My mission is to turn repetitive business tasks into simple, dependable automation systems that genuinely save time and reduce errors.
                     </p>
                   </>
                 ) : (
                   <>
-                    <h3 className="text-xl font-semibold text-white">Designing smarter digital futures</h3>
+                    <h3 className="text-xl font-semibold text-white">Designing smarter business workflows</h3>
                     <p className="mt-3 text-sm leading-7 text-slate-400">
-                      I envision a future where modern websites and automation tools feel effortless, accessible, and deeply connected to real business goals.
+                      I envision a future where AI workflows, internal tools, and business systems are connected clearly and run with less manual effort.
                     </p>
                   </>
                 )}
@@ -190,8 +190,8 @@ export default function About() {
         <div className="mx-auto max-w-6xl">
           <SectionHeading
             kicker="Skills & tools"
-            title="A practical stack for automation, AI, and product delivery"
-            description="The stack is chosen around outcomes: automation, integration, and clear frontend execution."
+            title="A practical stack for automation, AI, and delivery"
+            description="The stack is chosen around outcomes: automation, integration, and clear handoffs."
             align="center"
           />
 
@@ -242,9 +242,9 @@ export default function About() {
 
       <section className="px-6 py-16 sm:px-8 lg:px-20">
         <GlassCard className="mx-auto max-w-5xl px-8 py-12 text-center transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40 lg:px-12">
-          <h2 className="text-3xl font-bold text-white sm:text-4xl">Ready to build something exceptional?</h2>
+          <h2 className="text-3xl font-bold text-white sm:text-4xl">Ready to automate something repetitive?</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-300">
-            Let’s turn your ideas into a portfolio or website that feels modern, trusted, and memorable.
+            Let’s turn your manual process into a workflow that feels modern, trusted, and easy to maintain.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link to="/contact" className="rounded-full bg-white px-6 py-3 font-semibold text-slate-950 transition hover:bg-slate-100">

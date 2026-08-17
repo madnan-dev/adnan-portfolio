@@ -7,9 +7,9 @@ import SectionHeading from '../components/SectionHeading';
 
 export default function Home() {
   const metrics = [
-    { label: 'Automations shipped', value: 45, suffix: '+' },
-    { label: 'Hours saved weekly', value: 120, suffix: '+' },
-    { label: 'Client satisfaction', value: 98, suffix: '%' },
+    { label: 'Automation flows planned', value: 12, suffix: '+' },
+    { label: 'Repetitive steps removed', value: 90, suffix: '%' },
+    { label: 'Response time improvement', value: 68, suffix: '%' },
   ];
 
   const [counts, setCounts] = useState(metrics.map(() => 0));
@@ -24,77 +24,77 @@ export default function Home() {
 
   const services = [
     {
-      title: 'Automation Systems',
+      title: 'Workflow Automation',
       icon: Workflow,
-      desc: 'n8n workflows, webhooks, and operational automations that eliminate repetitive manual work.',
+      desc: 'n8n workflows, webhooks, and smart triggers that remove repetitive manual work.',
     },
     {
-      title: 'AI Agent Builds',
+      title: 'AI Assistants',
       icon: Bot,
-      desc: 'AI routing, OpenAI integrations, and agentic flows that support real business decisions.',
+      desc: 'OpenAI-powered assistants that classify requests, draft replies, and guide next actions.',
     },
     {
-      title: 'API Integrations',
+      title: 'System Integrations',
       icon: Layers3,
-      desc: 'Reliable connections across CRMs, databases, internal tools, and third-party platforms.',
+      desc: 'Reliable connections across CRMs, spreadsheets, databases, forms, and internal tools.',
     },
     {
-      title: 'Frontend Systems',
+      title: 'Ops Automation',
       icon: Sparkles,
-      desc: 'Premium React interfaces that make automation products feel credible and easy to use.',
+      desc: 'Lead handling, follow-up sequences, reporting, and admin tasks moved into repeatable systems.',
     },
   ];
 
   const process = [
-    { step: '01', title: 'Discover', text: 'Understand the workflow, blockers, stakeholders, and the measurable outcome that matters.' },
-    { step: '02', title: 'Design', text: 'Map the automation logic, user experience, data structure, and failure handling before building.' },
-    { step: '03', title: 'Automate', text: 'Implement the workflow in n8n, connect APIs, and test edge cases across the full pipeline.' },
-    { step: '04', title: 'Deliver', text: 'Launch with documentation, handoff notes, and a system the team can trust and maintain.' },
+    { step: '01', title: 'Discover', text: 'Identify the repetitive task, the bottlenecks, and the business result that matters most.' },
+    { step: '02', title: 'Map', text: 'Break the workflow into trigger, logic, data movement, and approval points before building.' },
+    { step: '03', title: 'Automate', text: 'Build the system in n8n or similar tools, connect APIs, and test the edge cases.' },
+    { step: '04', title: 'Handover', text: 'Document the flow, explain the logic, and leave the team with a system they can trust.' },
   ];
 
   const workflowNodes = [
-    { title: 'Webhook Trigger', icon: MessageSquare, tone: 'from-cyan-400/30 to-sky-500/10', detail: 'Incoming form, lead, or system event.' },
-    { title: 'AI Router', icon: Bot, tone: 'from-sky-400/30 to-blue-500/10', detail: 'Classify intent and prepare the next step.' },
-    { title: 'Actions', icon: Workflow, tone: 'from-blue-400/30 to-indigo-500/10', detail: 'Send to CRM, email, Slack, or database.' },
-    { title: 'Outcome', icon: CheckCircle2, tone: 'from-emerald-400/30 to-teal-500/10', detail: 'Tracked delivery with measurable resolution.' },
+    { title: 'Trigger', icon: MessageSquare, tone: 'from-cyan-400/30 to-sky-500/10', detail: 'A form submission, email, message, or database event starts the flow.' },
+    { title: 'AI Decision', icon: Bot, tone: 'from-sky-400/30 to-blue-500/10', detail: 'The request is classified, summarized, or routed by AI logic.' },
+    { title: 'Automated Actions', icon: Workflow, tone: 'from-blue-400/30 to-indigo-500/10', detail: 'The system sends updates to CRM, Slack, email, or sheets.' },
+    { title: 'Outcome', icon: CheckCircle2, tone: 'from-emerald-400/30 to-teal-500/10', detail: 'Manual effort drops and the process becomes consistent.' },
   ];
 
   const featuredProjects = [
     {
-      title: 'Lead Intake Automation',
-      metric: 'Saved 18 hrs/week',
-      description: 'Converted inbound inquiries into structured CRM records, qualification tasks, and instant follow-up.',
-      tags: ['n8n', 'OpenAI', 'HubSpot', 'Webhooks'],
-    },
-    {
-      title: 'Client Reporting Pipeline',
-      metric: 'Processed 250+ updates/day',
-      description: 'Automated recurring reporting across spreadsheets, emails, and dashboards with consistent formatting.',
-      tags: ['Google Sheets', 'PostgreSQL', 'API', 'n8n'],
+      title: 'Lead Qualification Flow',
+      metric: 'Faster response time',
+      description: 'Captured new leads, scored intent, and sent qualified prospects to the right pipeline automatically.',
+      tags: ['n8n', 'OpenAI', 'CRM', 'Webhooks'],
     },
     {
       title: 'Support Triage Assistant',
-      metric: 'Reduced manual sorting by 70%',
-      description: 'Routed incoming support requests to the right queue with AI classification and escalation rules.',
-      tags: ['OpenAI API', 'Slack', 'Zendesk', 'Automation'],
+      metric: 'Reduced manual sorting',
+      description: 'Read incoming support requests, tagged urgency, and routed them to the correct team automatically.',
+      tags: ['OpenAI API', 'Slack', 'Email', 'Automation'],
+    },
+    {
+      title: 'Admin Cleanup System',
+      metric: 'Less repetitive work',
+      description: 'Moved recurring admin steps into a consistent workflow for sheets, reminders, and follow-ups.',
+      tags: ['Google Sheets', 'Notion', 'Zapier', 'n8n'],
     },
   ];
 
   const testimonials = [
     {
-      quote: 'He translated a messy process into a workflow that the team could actually trust.',
-      name: 'Operations Manager',
-      role: 'SaaS Company',
-    },
-    {
-      quote: 'Fast communication, clean delivery, and the automation cut down our admin workload immediately.',
-      name: 'Founder',
+      quote: 'He turned a messy manual process into a workflow the team could actually trust.',
+      name: 'Operations Lead',
       role: 'Service Business',
     },
     {
-      quote: 'The project looked premium and the underlying system was clearly built with care.',
+      quote: 'The automation reduced follow-up work and made our response process much faster.',
+      name: 'Founder',
+      role: 'Small Agency',
+    },
+    {
+      quote: 'Clear communication, clean delivery, and a result that saved the team time every week.',
       name: 'Product Lead',
-      role: 'Agency Partner',
+      role: 'Startup Partner',
     },
   ];
 
@@ -103,9 +103,9 @@ export default function Home() {
     { label: 'OpenAI API', icon: Bot },
     { label: 'Zapier', icon: Sparkles },
     { label: 'REST APIs', icon: Layers3 },
-    { label: 'React', icon: ChartNoAxesCombined },
-    { label: 'Node.js', icon: Gauge },
-    { label: 'PostgreSQL', icon: ShieldCheck },
+    { label: 'Google Sheets', icon: ChartNoAxesCombined },
+    { label: 'Slack', icon: Gauge },
+    { label: 'Notion', icon: ShieldCheck },
   ];
 
   return (
@@ -139,12 +139,12 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="max-w-2xl"
           >
-            <p className="section-kicker text-sky-300">AI Automation Engineer / n8n Workflow Developer</p>
+            <p className="section-kicker text-sky-300">AI Automation Engineer / Workflow Builder</p>
             <h1 className="section-title mt-4 text-6xl text-white sm:text-7xl xl:text-8xl leading-tight">
-              I build automation systems that make businesses move faster and look sharper.
+              I build AI automation systems that remove repetitive work and keep businesses moving.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300 sm:text-xl">
-              I design AI workflows, API integrations, and premium frontends that convince both recruiters and clients you are working with someone who ships reliable systems, not just pretty screens.
+              I design AI workflows, API integrations, and smart handoff systems that capture leads, sort requests, send follow-ups, and turn manual tasks into dependable automation.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -152,7 +152,7 @@ export default function Home() {
                 to="/projects"
                 className="inline-flex items-center gap-2 rounded-full bg-sky-400 px-6 py-3 font-semibold text-slate-950 transition hover:bg-sky-300 focus-ring"
               >
-                View Case Studies
+                View Automations
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
@@ -175,7 +175,7 @@ export default function Home() {
                 <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.5 }} className="col-span-4 row-span-2">
                   <GlassCard className="h-full p-6 transition-transform hover:-translate-y-1 hover:border-sky-400/40">
                     <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">Current Focus</p>
-                    <h3 className="mt-3 text-2xl font-bold text-white">Highlights</h3>
+                    <h3 className="mt-3 text-2xl font-bold text-white">What I optimize</h3>
                     <div className="mt-4 grid gap-3">
                       {metrics.map((metric, index) => (
                         <div key={metric.label} className="rounded-md bg-slate-900/50 p-3 border border-slate-800">
@@ -190,7 +190,7 @@ export default function Home() {
                 <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.55, delay: 0.05 }} className="col-span-2">
                   <GlassCard className="h-full p-6 transition-transform hover:-translate-y-1 hover:border-sky-400/40">
                     <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">Services</p>
-                    <h4 className="mt-2 text-lg font-semibold text-white">Selected</h4>
+                    <h4 className="mt-2 text-lg font-semibold text-white">Core offers</h4>
                     <div className="mt-4 grid gap-3">
                       {services.slice(0, 3).map((s) => (
                         <div key={s.title} className="flex items-center gap-3">
@@ -205,7 +205,7 @@ export default function Home() {
                 <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.6, delay: 0.08 }} className="col-span-2 row-span-1">
                   <GlassCard className="h-full p-6 transition-transform hover:-translate-y-1 hover:border-sky-400/40">
                     <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">Workflow Preview</p>
-                    <h4 className="mt-2 text-lg font-semibold text-white">Pipeline</h4>
+                    <h4 className="mt-2 text-lg font-semibold text-white">Automation flow</h4>
                     <div className="mt-4 space-y-3 text-sm text-slate-300">
                       {workflowNodes.map((n) => (
                         <div key={n.title} className="flex items-start gap-3">
@@ -294,8 +294,8 @@ export default function Home() {
         <div className="section-shell">
           <SectionHeading
             kicker="How I work"
-            title="A clear process that turns messy problems into reliable systems"
-            description="The goal is not just shipping something that works once. It is building a workflow or interface that remains understandable, maintainable, and useful after launch."
+            title="A clear process that turns manual tasks into reliable automations"
+            description="The goal is not just shipping something that works once. It is building an automation that stays understandable, maintainable, and useful after launch."
             align="center"
           />
 
@@ -317,7 +317,7 @@ export default function Home() {
             <SectionHeading
               kicker="Capabilities"
               title="The systems I actually build"
-              description="The stack reflects the work: automation first, AI where it adds leverage, and frontend polish where it improves trust and adoption."
+              description="Automation first, AI where it adds leverage, and integrations where the business needs data to move cleanly."
             />
 
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -373,7 +373,7 @@ export default function Home() {
           <SectionHeading
             kicker="Selected Work"
             title="Case-study style results, not vague portfolio filler"
-            description="Each project is written to show the problem, the approach, and the measurable value. That matters to recruiters and clients alike."
+            description="Each project shows the problem, the workflow, and the measurable value. That matters to clients and recruiters alike."
             align="center"
           />
 
@@ -412,8 +412,8 @@ export default function Home() {
           <GlassCard className="p-7 sm:p-8">
             <SectionHeading
               kicker="Testimonials"
-              title="Social proof you can refine later"
-              description="The structure is here so you can replace placeholders with real client quotes, LinkedIn recommendations, or recruiter feedback."
+              title="Client feedback that builds trust"
+              description="Use this section for real client quotes, LinkedIn recommendations, or recruiter feedback when you have them."
             />
 
             <div className="mt-8 grid gap-4 md:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
@@ -432,9 +432,9 @@ export default function Home() {
           <GlassCard className="flex flex-col justify-between p-7 sm:p-8">
             <div>
               <p className="section-kicker text-sky-300">Ready when you are</p>
-              <h2 className="section-title mt-4 text-4xl text-white sm:text-5xl">Let’s build something credible, useful, and ready to ship.</h2>
+              <h2 className="section-title mt-4 text-4xl text-white sm:text-5xl">Let’s automate something repetitive and make it dependable.</h2>
               <p className="mt-5 max-w-xl text-base leading-8 text-slate-400">
-                Whether it is an automation system, an AI-assisted workflow, or a sharper portfolio site, the goal is the same: clear value, polished execution, and a smooth handoff.
+                Whether it is lead intake, customer support, reporting, or internal admin, the goal is the same: less manual work, better consistency, and a smooth handoff.
               </p>
             </div>
 

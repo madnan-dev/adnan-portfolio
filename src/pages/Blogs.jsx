@@ -17,7 +17,7 @@ export default function Blogs() {
       date: 'Jul 20, 2026',
       readTime: '5 min read',
       excerpt: 'Learn how to connect custom APIs, trigger automated webhooks, and handle errors gracefully in production workflows.',
-      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&auto=format&fit=crop&q=80',
       featured: true,
       author: 'Automation Specialist',
       topic: 'Workflow design',
@@ -28,23 +28,23 @@ export default function Blogs() {
       category: 'ai',
       date: 'Jul 15, 2026',
       readTime: '7 min read',
-      excerpt: 'Discover how AI agents use dynamic routing, context evaluation, and LLMs to make smart decisions.',
-      image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?w=600&auto=format&fit=crop&q=80',
+      excerpt: 'Discover how AI agents use dynamic routing, context evaluation, and LLMs to make smart decisions inside real business processes.',
+      image: 'https://images.unsplash.com/photo-1526378722484-bd91ca387e72?w=600&auto=format&fit=crop&q=80',
       featured: false,
       author: 'AI Developer',
       topic: 'AI systems',
     },
     {
       id: 3,
-      title: 'Mastering Modern React Components with Tailwind CSS',
-      category: 'web',
+      title: 'Designing Better Lead Qualification Workflows',
+      category: 'automation',
       date: 'Jul 10, 2026',
       readTime: '4 min read',
-      excerpt: 'Best practices for building clean, modular React interfaces with utility-first styling at scale.',
-      image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=600&auto=format&fit=crop&q=80',
+      excerpt: 'A practical breakdown of how to score leads, route them, and keep follow-up actions organized in one flow.',
+      image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&auto=format&fit=crop&q=80',
       featured: false,
-      author: 'Frontend Lead',
-      topic: 'Frontend craft',
+      author: 'Workflow Engineer',
+      topic: 'Lead systems',
     },
     {
       id: 4,
@@ -53,28 +53,28 @@ export default function Blogs() {
       date: 'Jul 05, 2026',
       readTime: '6 min read',
       excerpt: 'A practical guide to building inbox management flows that categorize and reply to leads automatically.',
-      image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&auto=format&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&auto=format&fit=crop&q=80',
       featured: false,
       author: 'Workflow Engineer',
       topic: 'Inbox automation',
     },
     {
       id: 5,
-      title: 'Optimizing Web App Performance and Assets',
-      category: 'web',
+      title: 'Prompt Design for Reliable AI Outputs',
+      category: 'ai',
       date: 'Jun 28, 2026',
       readTime: '5 min read',
-      excerpt: 'Tips on asset loading, semantic markup, and structure optimizations for faster, smoother experiences.',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=80',
+      excerpt: 'Tips on prompt structure, constraints, and fallback behavior for more reliable AI-driven automation.',
+      image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&auto=format&fit=crop&q=80',
       featured: false,
-      author: 'Web Architect',
-      topic: 'Performance',
+      author: 'AI Developer',
+      topic: 'Prompt systems',
     },
   ];
 
   const stats = [
     { label: 'Workflows explained', value: '12+' },
-    { label: 'Topics covered', value: '4' },
+    { label: 'AI topics covered', value: '4' },
     { label: 'Practical examples', value: '100%' },
   ];
 
@@ -82,13 +82,12 @@ export default function Blogs() {
     { key: 'all', label: 'All Articles' },
     { key: 'automation', label: 'Automation' },
     { key: 'ai', label: 'AI' },
-    { key: 'web', label: 'Web' },
   ];
 
   const spotlightTopics = [
     { icon: Workflow, title: 'n8n Workflow Design', text: 'Patterns for triggers, branching, retries, and clean handoff logic.' },
     { icon: Bot, title: 'AI Routing & Agents', text: 'How to add LLM decisions without losing control over the process.' },
-    { icon: Code2, title: 'Frontend Systems', text: 'Building interfaces that support credibility and conversion.' },
+    { icon: Code2, title: 'Prompt Engineering', text: 'Reliable prompts, structured outputs, and fallback logic for automation.' },
     { icon: Sparkles, title: 'Delivery Notes', text: 'Practical tips and implementation details from real builds.' },
   ];
 
@@ -112,11 +111,11 @@ export default function Blogs() {
           <h1 className="section-title mt-4 text-5xl text-white sm:text-6xl lg:text-7xl leading-[0.95]">
             Writing for people who build{' '}
             <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
-              systems that need to work.
+              AI automations that need to work.
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
-            This is the thinking layer behind the portfolio: automation patterns, AI workflows, and frontend decisions that help you look credible and ship better.
+            This is the thinking layer behind the portfolio: automation patterns, AI workflows, and practical implementation notes that help you ship dependable systems.
           </p>
 
           <div className="mx-auto mt-8 flex max-w-2xl flex-col gap-3 sm:flex-row">
@@ -168,7 +167,7 @@ export default function Blogs() {
           <SectionHeading
             kicker="What I write about"
             title="Topics that map directly to the kind of work I build"
-            description="The articles are organized around the same stack and delivery mindset used across the rest of the portfolio."
+            description="The articles are organized around the same automation and AI delivery mindset used across the rest of the portfolio."
             align="center"
           />
 
@@ -274,7 +273,7 @@ export default function Blogs() {
         <GlassCard className="mx-auto max-w-5xl px-8 py-10 text-center transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40 lg:px-12">
           <h3 className="text-2xl font-bold text-white sm:text-3xl">Subscribe for fresh insights</h3>
           <p className="mx-auto mt-3 max-w-2xl text-lg leading-8 text-slate-300">
-            Get practical articles and tips on web development, automation, and AI directly in your inbox.
+            Get practical articles and tips on automation, AI workflows, and system design directly in your inbox.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-slate-950 transition hover:bg-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70">

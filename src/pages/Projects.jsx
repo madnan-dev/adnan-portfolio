@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import GlassCard from '../components/GlassCard';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -12,22 +13,22 @@ export default function Projects() {
       description:
         'Automates Facebook post scheduling with Buffer API so social content can be prepared and published in a controlled workflow.',
       tags: ['Buffer API', 'Facebook', 'n8n', 'Automation'],
-      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&auto=format&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=600&auto=format&fit=crop&q=80',
       featured: true,
-      demoLink: '#',
+      demoLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/01-FbPage-post-scheduler',
       githubLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/01-FbPage-post-scheduler',
     },
     {
       id: 2,
-      title: 'Smart-Document-Classifier',
+      title: 'AI Document Summarizer',
       category: 'automation',
       description:
-        'Classifies incoming documents into the right category to reduce manual sorting and speed up document processing.',
-      tags: ['Document AI', 'Classification', 'n8n', 'Workflow'],
-      image: 'https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?w=600&auto=format&fit=crop&q=80',
+        'Summarizes long documents into concise, useful outputs that are easier to review, share, and act on.',
+      tags: ['Document AI', 'Summarization', 'n8n', 'Workflow'],
+      image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&auto=format&fit=crop&q=80',
       featured: false,
-      demoLink: '#',
-      githubLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/02-Smart-Document-Classifier',
+      demoLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/05-AI-Document-Summarizer',
+      githubLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/05-AI-Document-Summarizer',
     },
     {
       id: 3,
@@ -36,12 +37,14 @@ export default function Projects() {
       description:
         'Scrapes search results with Serper to collect structured search data for downstream automation and analysis.',
       tags: ['Serper', 'Search Scraping', 'n8n', 'Data Extraction'],
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&q=80',
+      image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&auto=format&fit=crop&q=80',
       featured: false,
-      demoLink: '#',
+      demoLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/03-serper-search-scraper',
       githubLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/03-serper-search-scraper',
     },
   ];
+
+  const repositoryLink = 'https://github.com/madnan-dev/n8n-automation-workflows';
 
   const filteredProjects = activeFilter === 'all' ? projectsData : projectsData.filter((item) => item.category === activeFilter);
   const featuredProject = projectsData.find((project) => project.featured);
@@ -58,15 +61,15 @@ export default function Projects() {
           <h1 className="text-5xl font-black leading-[0.95] text-white sm:text-6xl lg:text-7xl">
             A showcase of{' '}
             <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
-              impactful digital work.
+              AI automation workflows.
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
-            Each project reflects a blend of thoughtful design, modern development, and practical automation.
+            These are the three featured workflows from my n8n automation repository, each shown with a relevant link and visual theme.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {['all', 'web', 'automation', 'ai'].map((cat) => (
+            {['all', 'automation'].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
@@ -76,7 +79,7 @@ export default function Projects() {
                     : 'bg-slate-900/70 text-slate-300 hover:bg-slate-800 hover:text-white'
                 }`}
               >
-                {cat === 'all' ? 'All Projects' : cat}
+                {cat === 'all' ? 'All Projects' : 'Automation Workflows'}
               </button>
             ))}
           </div>
@@ -96,6 +99,24 @@ export default function Projects() {
                     {tag}
                   </span>
                 ))}
+              </div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href={featuredProject.githubLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
+                >
+                  Open Workflow
+                </a>
+                <a
+                  href={repositoryLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full border border-slate-700 bg-slate-950 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-sky-400 hover:text-white"
+                >
+                  Full Repository
+                </a>
               </div>
             </div>
 
@@ -151,12 +172,35 @@ export default function Projects() {
                     rel="noreferrer"
                     className="inline-flex items-center justify-center rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
                   >
-                    Live Demo
+                    Open Workflow
                   </a>
                 </div>
               </div>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      <section className="px-6 py-10 sm:px-8 lg:px-20 lg:pb-16">
+        <div className="mx-auto max-w-6xl">
+          <GlassCard className="flex flex-col gap-6 p-8 transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p className="section-kicker text-sky-300">Full repository</p>
+              <h2 className="section-title mt-3 text-3xl text-white sm:text-4xl">33 workflows in one n8n automation repo</h2>
+              <p className="mt-4 max-w-2xl text-base leading-8 text-slate-400">
+                The full GitHub repository contains the complete set of automation workflows. These three projects are the featured examples, and the full repo shows the larger collection.
+              </p>
+            </div>
+
+            <a
+              href={repositoryLink}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-slate-950 transition hover:bg-sky-200"
+            >
+              View GitHub Repository
+            </a>
+          </GlassCard>
         </div>
       </section>
     </motion.div>

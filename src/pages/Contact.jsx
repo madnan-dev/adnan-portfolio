@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Clock3, Mail, MapPin, MessageSquareText, Send, Sparkles } from 'lucide-react';
+import { CheckCircle2, Clock3, Mail, MessageSquareText, Send, Sparkles } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
 import SectionHeading from '../components/SectionHeading';
 
@@ -39,7 +39,7 @@ export default function Contact() {
     },
     {
       question: 'How long does a project usually take?',
-      answer: 'Depending on complexity, most web apps and automation workflows are delivered within 1 to 3 weeks.',
+      answer: 'Depending on complexity, most automation workflows are delivered within 1 to 3 weeks.',
     },
     {
       question: 'Can you integrate AI into existing apps?',
@@ -51,7 +51,7 @@ export default function Contact() {
     {
       title: 'Email',
       icon: Mail,
-      text: 'Best for project briefs, scope questions, and detailed collaboration requests.',
+      text: 'Best for project briefs, scope questions, and detailed automation requests.',
       value: 'contact@example.com',
       href: 'mailto:contact@example.com',
     },
@@ -73,7 +73,7 @@ export default function Contact() {
     'n8n workflow builds',
     'AI agent and OpenAI integrations',
     'API automation and webhooks',
-    'Frontend pages and portfolio upgrades',
+    'Internal tools and workflow upgrades',
   ];
 
   return (
@@ -84,13 +84,13 @@ export default function Contact() {
         <div className="mx-auto max-w-6xl text-center">
           <p className="section-kicker text-sky-300">Contact</p>
           <h1 className="section-title mt-4 text-5xl text-white sm:text-6xl lg:text-7xl leading-[0.95]">
-            Let’s build something{' '}
+            Let’s automate something{' '}
             <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
-              remarkable together.
+              repetitive together.
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
-            Whether you need a polished website, automation, or a smarter digital workflow, I’m ready to help turn your idea into reality.
+            If you need a workflow, AI assistant, or business process automation, send the details and I’ll help turn the idea into a clear build plan.
           </p>
         </div>
       </section>
@@ -198,7 +198,7 @@ export default function Contact() {
                       required
                       value={formData.subject}
                       onChange={handleChange}
-                      placeholder="Website / Automation / AI"
+                        placeholder="Automation / AI / Workflow"
                       className="focus-visible:outline-none w-full rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-sky-500"
                     />
                   </div>
@@ -212,7 +212,7 @@ export default function Contact() {
                       rows="5"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Tell me about your idea or project..."
+                      placeholder="Describe the process you want to automate, the tools you use, and the outcome you want..."
                       className="focus-visible:outline-none w-full resize-none rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3 text-sm text-white placeholder-slate-500 focus:border-sky-500"
                     />
                   </div>
@@ -222,7 +222,7 @@ export default function Contact() {
                     className="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-sky-500 px-5 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-sky-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70"
                   >
                     <Send className="h-4 w-4" />
-                    Send Message
+                    Send Automation Brief
                   </button>
                 </form>
               )}

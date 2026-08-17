@@ -6,6 +6,7 @@ import { Menu, X, ArrowUpRight, FileDown } from 'lucide-react';
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const repositoryLink = 'https://github.com/madnan-dev/n8n-automation-workflows';
 
   const links = useMemo(
     () => [
@@ -82,11 +83,21 @@ export default function Navbar() {
             Resume
           </a>
 
+          <a
+            href={repositoryLink}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-4 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-sky-400/40 hover:text-white focus-ring"
+          >
+            <ArrowUpRight className="h-4 w-4" />
+            GitHub Repo
+          </a>
+
           <Link
             to="/contact"
             className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-slate-950 transition hover:bg-sky-200 focus-ring"
           >
-            Let&apos;s Talk
+            Start a Build
             <ArrowUpRight className="h-4 w-4" />
           </Link>
         </div>
@@ -125,11 +136,21 @@ export default function Navbar() {
                 Download Resume
               </a>
 
+              <a
+                href={repositoryLink}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border border-slate-700 bg-slate-900/80 px-4 py-3 text-sm font-semibold text-slate-200 transition hover:border-sky-400/40 hover:text-white focus-ring"
+              >
+                <ArrowUpRight className="h-4 w-4" />
+                GitHub Repo
+              </a>
+
               <Link
                 to="/contact"
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-200 focus-ring"
               >
-                Let&apos;s Talk
+                Start a Build
                 <ArrowUpRight className="h-4 w-4" />
               </Link>
             </div>

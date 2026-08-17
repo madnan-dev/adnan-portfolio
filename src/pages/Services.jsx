@@ -13,34 +13,34 @@ export default function Services() {
       id: 1,
       title: 'Workflow Automation',
       category: 'automation',
-      description: 'Streamline operations by connecting APIs, webhooks, and third-party apps into efficient, reliable systems that remove repetitive manual work.',
+      description: 'Connect forms, webhooks, APIs, and business apps into reliable systems that remove repetitive manual work.',
       icon: Workflow,
       features: ['Custom Webhooks', 'API Integration', 'Error Handling'],
       outcome: 'Reduce admin work and keep tasks moving without manual follow-up.',
     },
     {
       id: 2,
-      title: 'Agentic AI Systems',
+      title: 'AI Assistants',
       category: 'ai',
-      description: 'Deploy smart automation agents that can reason, route tasks, and support business workflows intelligently.',
+      description: 'Build AI assistants that classify requests, draft responses, and route work to the right step automatically.',
       icon: Bot,
       features: ['LLM Integration', 'Autonomous Routing', 'Smart Decision Support'],
       outcome: 'Add AI decision layers without sacrificing control or visibility.',
     },
     {
       id: 3,
-      title: 'Frontend Development',
-      category: 'web',
-      description: 'Create fast, elegant, and responsive user interfaces using modern React and Tailwind-based architecture.',
+      title: 'Lead Capture Systems',
+      category: 'automation',
+      description: 'Capture leads from forms, landing pages, and inboxes, then push them into your CRM with follow-up logic.',
       icon: Code2,
-      features: ['Responsive Layouts', 'Clean Components', 'Optimized Performance'],
-      outcome: 'Make your product feel credible and easier to use from the first scroll.',
+      features: ['Lead Routing', 'CRM Sync', 'Auto Follow-up'],
+      outcome: 'Respond faster and keep new leads from slipping through the cracks.',
     },
     {
       id: 4,
-      title: 'CRM & Email Integration',
+      title: 'CRM & Email Automation',
       category: 'automation',
-      description: 'Automate onboarding, messaging, and CRM updates so your team can focus on growth rather than repetitive work.',
+      description: 'Automate onboarding, email sequences, and CRM updates so your team can focus on growth instead of repetitive work.',
       icon: Database,
       features: ['Gmail Sync', 'Auto Replies', 'Lead Management'],
       outcome: 'Keep leads and clients updated automatically with consistent follow-through.',
@@ -56,26 +56,26 @@ export default function Services() {
     },
     {
       id: 6,
-      title: 'Performance & SEO',
-      category: 'web',
-      description: 'Improve page speed, structure, and visibility so your product performs better in both user experience and search.',
+      title: 'Internal Ops Automation',
+      category: 'automation',
+      description: 'Automate reporting, reminders, status updates, and internal handoffs so daily operations run smoother.',
       icon: Globe,
-      features: ['Speed Audits', 'Mobile-First UX', 'SEO Structure'],
-      outcome: 'Improve discoverability and reduce friction on mobile and desktop.',
+      features: ['Status Updates', 'Reporting', 'Team Notifications'],
+      outcome: 'Reduce repetitive internal work and keep the team aligned.',
     },
   ];
 
   const serviceStats = [
-    { label: 'Tools connected', value: '25+' },
-    { label: 'Automation logic', value: '50+' },
+    { label: 'Workflow blueprints', value: '20+' },
+    { label: 'AI flows mapped', value: '35+' },
     { label: 'Deployment focus', value: 'Reliable' },
   ];
 
   const deliverySteps = [
     { step: '01', title: 'Audit', text: 'Review current tools, manual steps, and business goals before building anything.' },
-    { step: '02', title: 'Prototype', text: 'Map the workflow or interface and test the key paths before rollout.' },
-    { step: '03', title: 'Implement', text: 'Connect apps, refine the UI, and harden the system against failure cases.' },
-    { step: '04', title: 'Support', text: 'Hand off with clarity so the system can be maintained, extended, or scaled.' },
+    { step: '02', title: 'Map', text: 'Define trigger, logic, data movement, and fallback behavior before rollout.' },
+    { step: '03', title: 'Build', text: 'Connect the tools, automate the flow, and test the key paths end to end.' },
+    { step: '04', title: 'Handover', text: 'Document the system so it can be maintained, extended, or scaled easily.' },
   ];
 
   const filteredServices =
@@ -95,11 +95,11 @@ export default function Services() {
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-300 sm:text-xl">
-            I build services that are clear to buy, easy to trust, and focused on measurable business outcomes. This is for clients who want execution, not vague promises.
+            I build services that are clear to buy, easy to trust, and focused on measurable automation outcomes. This is for clients who want execution, not vague promises.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {['all', 'automation', 'ai', 'web'].map((cat) => (
+            {['all', 'automation', 'ai'].map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
@@ -165,7 +165,7 @@ export default function Services() {
               <SectionHeading
                 kicker="How delivery works"
                 title="A process that keeps scope clear and projects moving"
-                description="This is designed for both client work and internal product support: clear discovery, controlled implementation, and a useful handoff."
+                description="This is designed for automation work: clear discovery, controlled implementation, and a useful handoff."
               />
 
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -186,13 +186,13 @@ export default function Services() {
                 <p className="section-kicker text-sky-300">Need a custom solution?</p>
                 <h2 className="section-title mt-4 text-4xl text-white sm:text-5xl">One-off builds, automation support, and system upgrades.</h2>
                 <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-                  If your business needs better routing, a more polished frontend, or AI added into an existing flow, I can adapt the work to the scope you actually need.
+                  If your business needs better routing, AI added into an existing flow, or a manual process moved into automation, I can adapt the work to the scope you actually need.
                 </p>
               </div>
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-slate-950 transition hover:bg-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70">
-                  Start a Project
+                  Start a Build
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link to="/projects" className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-white/5 px-6 py-3 font-semibold text-slate-100 transition hover:border-sky-400 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70">

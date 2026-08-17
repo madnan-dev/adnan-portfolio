@@ -2,6 +2,8 @@ import { Code2, Mail, ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
+  const repositoryLink = 'https://github.com/madnan-dev/n8n-automation-workflows';
+
   const quickLinks = [
     { to: '/', label: 'Home' },
     { to: '/about', label: 'About' },
@@ -18,10 +20,10 @@ export default function Footer() {
           <div>
             <p className="section-kicker text-sky-300">Automation Engineer</p>
             <h2 className="mt-3 max-w-sm text-3xl font-semibold tracking-tight text-white" style={{ fontFamily: 'var(--font-display)' }}>
-              Building AI systems, workflow automations, and client-ready digital experiences.
+              Building AI workflows, automation systems, and reliable business handoffs.
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-7 text-slate-400">
-              Focused on practical automation, reliable integrations, and polished frontends that help teams move faster.
+              Focused on practical automation, reliable integrations, and clear delivery that helps teams move faster.
             </p>
           </div>
 
@@ -43,9 +45,9 @@ export default function Footer() {
                 <Mail className="h-4 w-4" />
                 contact@example.com
               </a>
-              <a className="inline-flex items-center gap-2 text-sm text-slate-400 transition hover:text-white focus-ring" href="https://github.com/" target="_blank" rel="noreferrer">
+              <a className="inline-flex items-center gap-2 text-sm text-slate-400 transition hover:text-white focus-ring" href={repositoryLink} target="_blank" rel="noreferrer">
                 <Code2 className="h-4 w-4" />
-                GitHub
+                Workflow Repository
               </a>
               <a className="inline-flex items-center gap-2 text-sm text-slate-400 transition hover:text-white focus-ring" href="https://linkedin.com/" target="_blank" rel="noreferrer">
                 <ArrowUpRight className="h-4 w-4" />
@@ -53,7 +55,7 @@ export default function Footer() {
               </a>
               <Link to="/contact" className="inline-flex items-center gap-2 text-sm font-medium text-sky-300 transition hover:text-sky-200 focus-ring">
                 <ArrowUpRight className="h-4 w-4" />
-                Start a project
+                Start a build
               </Link>
             </div>
           </div>
@@ -63,7 +65,7 @@ export default function Footer() {
       <div className="border-t border-slate-800/70">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-5 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <p>© 2026 Madnan Dev. All rights reserved.</p>
-          <p>Available for freelance automation, AI, and frontend work.</p>
+          <p>Available for freelance automation, AI workflows, and system integration work.</p>
         </div>
       </div>
     </footer>
