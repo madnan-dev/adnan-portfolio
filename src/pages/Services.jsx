@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight, Bot, Code2, Database, Globe, MessageSquareText, Workflow } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
 import SectionHeading from '../components/SectionHeading';
@@ -81,12 +82,13 @@ export default function Services() {
     selectedCategory === 'all' ? servicesData : servicesData.filter((service) => service.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.45 }} className="min-h-screen bg-slate-950 text-slate-100">
       <section className="relative overflow-hidden px-6 py-20 sm:px-8 lg:px-20 lg:py-28">
+        <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), radial-gradient(rgba(255,255,255,0.01) 1px, transparent 1px)', backgroundSize: '28px 28px, 56px 56px', opacity: 0.04 }} />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.18),_transparent_38%),radial-gradient(circle_at_85%_20%,_rgba(59,130,246,0.16),_transparent_30%)]" />
         <div className="mx-auto max-w-6xl text-center">
           <p className="section-kicker text-sky-300">Services</p>
-          <h1 className="section-title mt-4 text-5xl text-white sm:text-6xl lg:text-7xl">
+          <h1 className="section-title mt-4 text-5xl text-white sm:text-6xl lg:text-7xl leading-[0.95]">
             Practical systems for{' '}
             <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
               automation, AI, and product growth.
@@ -116,86 +118,91 @@ export default function Services() {
 
       <section className="px-6 py-8 sm:px-8 lg:px-20 lg:pb-16">
         <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-3">
-          {serviceStats.map((stat) => (
-            <GlassCard key={stat.label} className="p-5 text-center">
-              <p className="text-3xl font-semibold text-white">{stat.value}</p>
-              <p className="mt-2 text-sm text-slate-400">{stat.label}</p>
-            </GlassCard>
+          {serviceStats.map((stat, index) => (
+            <motion.div key={stat.label} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.45, delay: index * 0.05 }}>
+              <GlassCard className="h-full p-5 text-center transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40">
+                <p className="text-3xl font-semibold text-white">{stat.value}</p>
+                <p className="mt-2 text-sm text-slate-400">{stat.label}</p>
+              </GlassCard>
+            </motion.div>
           ))}
         </div>
       </section>
 
       <section className="px-6 py-8 sm:px-8 lg:px-20 lg:pb-16">
         <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {filteredServices.map((service) => (
-            <GlassCard
-              key={service.id}
-              className="group flex h-full flex-col p-8 transition duration-300 hover:-translate-y-1 hover:border-sky-400/30"
-            >
-              <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-sky-500/25 bg-sky-500/10 text-sky-300">
-                <service.icon className="h-6 w-6" />
-              </div>
-              <h3 className="text-2xl font-semibold text-white">{service.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">{service.description}</p>
+          {filteredServices.map((service, index) => (
+            <motion.div key={service.id} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.45, delay: index * 0.05 }}>
+              <GlassCard className="group flex h-full flex-col p-8 transition duration-300 hover:-translate-y-1 hover:border-sky-400/30">
+                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-sky-500/25 bg-sky-500/10 text-sky-300">
+                  <service.icon className="h-6 w-6" />
+                </div>
+                <h3 className="text-2xl font-semibold text-white">{service.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">{service.description}</p>
 
-              <p className="mt-5 rounded-2xl border border-slate-800/80 bg-slate-950/50 px-4 py-3 text-sm leading-7 text-slate-300">
-                <span className="font-semibold text-sky-300">Outcome:</span> {service.outcome}
-              </p>
+                <p className="mt-5 rounded-2xl border border-slate-800/80 bg-slate-950/50 px-4 py-3 text-sm leading-7 text-slate-300">
+                  <span className="font-semibold text-sky-300">Outcome:</span> {service.outcome}
+                </p>
 
-              <ul className="mt-6 space-y-2 border-t border-slate-800 pt-6">
-                {service.features.map((feature) => (
-                  <li key={feature} className="flex items-center text-sm text-slate-300">
-                    <span className="mr-2 h-2 w-2 rounded-full bg-sky-400" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </GlassCard>
+                <ul className="mt-6 space-y-2 border-t border-slate-800 pt-6">
+                  {service.features.map((feature) => (
+                    <li key={feature} className="flex items-center text-sm text-slate-300">
+                      <span className="mr-2 h-2 w-2 rounded-full bg-sky-400" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </GlassCard>
+            </motion.div>
           ))}
         </div>
       </section>
 
       <section className="px-6 py-10 sm:px-8 lg:px-20">
         <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[1fr_0.9fr]">
-          <GlassCard className="p-8 lg:p-10">
-            <SectionHeading
-              kicker="How delivery works"
-              title="A process that keeps scope clear and projects moving"
-              description="This is designed for both client work and internal product support: clear discovery, controlled implementation, and a useful handoff."
-            />
+          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.45 }}>
+            <GlassCard className="h-full p-8 transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40 lg:p-10">
+              <SectionHeading
+                kicker="How delivery works"
+                title="A process that keeps scope clear and projects moving"
+                description="This is designed for both client work and internal product support: clear discovery, controlled implementation, and a useful handoff."
+              />
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {deliverySteps.map((step) => (
-                <div key={step.step} className="rounded-2xl border border-slate-800/80 bg-slate-950/50 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-300">{step.step}</p>
-                  <h3 className="mt-3 text-xl font-semibold text-white">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-slate-400">{step.text}</p>
-                </div>
-              ))}
-            </div>
-          </GlassCard>
+              <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                {deliverySteps.map((step) => (
+                  <div key={step.step} className="rounded-2xl border border-slate-800/80 bg-slate-950/50 p-5">
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-300">{step.step}</p>
+                    <h3 className="mt-3 text-xl font-semibold text-white">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{step.text}</p>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+          </motion.div>
 
-          <GlassCard className="flex flex-col justify-between p-8 lg:p-10">
-            <div>
-              <p className="section-kicker text-sky-300">Need a custom solution?</p>
-              <h2 className="section-title mt-4 text-4xl text-white sm:text-5xl">One-off builds, automation support, and system upgrades.</h2>
-              <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-                If your business needs better routing, a more polished frontend, or AI added into an existing flow, I can adapt the work to the scope you actually need.
-              </p>
-            </div>
+          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.45, delay: 0.05 }}>
+            <GlassCard className="flex h-full flex-col justify-between p-8 transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40 lg:p-10">
+              <div>
+                <p className="section-kicker text-sky-300">Need a custom solution?</p>
+                <h2 className="section-title mt-4 text-4xl text-white sm:text-5xl">One-off builds, automation support, and system upgrades.</h2>
+                <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+                  If your business needs better routing, a more polished frontend, or AI added into an existing flow, I can adapt the work to the scope you actually need.
+                </p>
+              </div>
 
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-slate-950 transition hover:bg-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70">
-                Start a Project
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link to="/projects" className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-white/5 px-6 py-3 font-semibold text-slate-100 transition hover:border-sky-400 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70">
-                See Results
-              </Link>
-            </div>
-          </GlassCard>
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 font-semibold text-slate-950 transition hover:bg-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70">
+                  Start a Project
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link to="/projects" className="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-white/5 px-6 py-3 font-semibold text-slate-100 transition hover:border-sky-400 hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70">
+                  See Results
+                </Link>
+              </div>
+            </GlassCard>
+          </motion.div>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 }

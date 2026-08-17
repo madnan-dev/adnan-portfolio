@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight, Bot, Code2, Search, Sparkles, Workflow } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
 import SectionHeading from '../components/SectionHeading';
@@ -102,12 +103,13 @@ export default function Blogs() {
   const featuredBlog = blogsData.find((blog) => blog.featured);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.45 }} className="min-h-screen bg-slate-950 text-slate-100">
       <section className="relative overflow-hidden px-6 py-20 sm:px-8 lg:px-20 lg:py-28">
+        <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), radial-gradient(rgba(255,255,255,0.01) 1px, transparent 1px)', backgroundSize: '28px 28px, 56px 56px', opacity: 0.04 }} />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.18),_transparent_38%),radial-gradient(circle_at_85%_20%,_rgba(59,130,246,0.16),_transparent_30%)]" />
         <div className="mx-auto max-w-6xl text-center">
           <p className="section-kicker text-sky-300">Insights & Articles</p>
-          <h1 className="section-title mt-4 text-5xl text-white sm:text-6xl lg:text-7xl">
+          <h1 className="section-title mt-4 text-5xl text-white sm:text-6xl lg:text-7xl leading-[0.95]">
             Writing for people who build{' '}
             <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
               systems that need to work.
@@ -150,11 +152,13 @@ export default function Blogs() {
 
       <section className="px-6 py-6 sm:px-8 lg:px-20">
         <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-3">
-          {stats.map((stat) => (
-            <GlassCard key={stat.label} className="p-5 text-center">
-              <p className="text-3xl font-semibold text-white">{stat.value}</p>
-              <p className="mt-2 text-sm text-slate-400">{stat.label}</p>
-            </GlassCard>
+          {stats.map((stat, index) => (
+            <motion.div key={stat.label} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.45, delay: index * 0.05 }}>
+              <GlassCard className="h-full p-5 text-center transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40">
+                <p className="text-3xl font-semibold text-white">{stat.value}</p>
+                <p className="mt-2 text-sm text-slate-400">{stat.label}</p>
+              </GlassCard>
+            </motion.div>
           ))}
         </div>
       </section>
@@ -169,17 +173,19 @@ export default function Blogs() {
           />
 
           <div className="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {spotlightTopics.map((topic) => {
+            {spotlightTopics.map((topic, index) => {
               const Icon = topic.icon;
 
               return (
-                <GlassCard key={topic.title} className="p-5">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-sky-500/20 bg-sky-500/10 text-sky-300">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-white">{topic.title}</h3>
-                  <p className="mt-2 text-sm leading-7 text-slate-400">{topic.text}</p>
-                </GlassCard>
+                <motion.div key={topic.title} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.45, delay: index * 0.05 }}>
+                  <GlassCard className="h-full p-5 transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-sky-500/20 bg-sky-500/10 text-sky-300">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-4 text-lg font-semibold text-white">{topic.title}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{topic.text}</p>
+                  </GlassCard>
+                </motion.div>
               );
             })}
           </div>
@@ -188,69 +194,73 @@ export default function Blogs() {
 
       {featuredBlog && selectedCategory === 'all' && !searchQuery && (
         <section className="px-6 py-6 sm:px-8 lg:px-20">
-          <GlassCard className="mx-auto grid max-w-6xl gap-8 p-8 lg:grid-cols-[0.95fr_1.05fr] lg:p-10">
-            <div className="overflow-hidden rounded-[1.5rem] border border-slate-800">
-              <img src={featuredBlog.image} alt={featuredBlog.title} loading="lazy" className="h-full w-full object-cover transition duration-500 hover:scale-105" />
-            </div>
+          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.45 }}>
+            <GlassCard className="mx-auto grid max-w-6xl gap-8 p-8 transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40 lg:grid-cols-[0.95fr_1.05fr] lg:p-10">
+              <div className="overflow-hidden rounded-[1.5rem] border border-slate-800">
+                <img src={featuredBlog.image} alt={featuredBlog.title} loading="lazy" className="h-full w-full object-cover transition duration-500 hover:scale-105" />
+              </div>
 
-            <div>
-              <div className="mb-4 flex flex-wrap items-center gap-2 text-xs text-slate-400">
-                <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 font-semibold uppercase tracking-[0.25em] text-sky-300">
-                  Featured
-                </span>
-                <span>{featuredBlog.date}</span>
-                <span>•</span>
-                <span>{featuredBlog.readTime}</span>
+              <div>
+                <div className="mb-4 flex flex-wrap items-center gap-2 text-xs text-slate-400">
+                  <span className="rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 font-semibold uppercase tracking-[0.25em] text-sky-300">
+                    Featured
+                  </span>
+                  <span>{featuredBlog.date}</span>
+                  <span>•</span>
+                  <span>{featuredBlog.readTime}</span>
+                </div>
+                <h2 className="text-3xl font-bold text-white sm:text-4xl">{featuredBlog.title}</h2>
+                <p className="mt-4 text-lg leading-8 text-slate-300">{featuredBlog.excerpt}</p>
+                <p className="mt-5 rounded-2xl border border-slate-800/80 bg-slate-950/50 px-4 py-3 text-sm leading-7 text-slate-300">
+                  <span className="font-semibold text-sky-300">Topic:</span> {featuredBlog.topic}
+                </p>
+                <div className="mt-6 flex items-center justify-between border-t border-slate-800 pt-4">
+                  <span className="text-sm text-slate-400">By {featuredBlog.author}</span>
+                  <button className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm font-semibold text-slate-950 transition hover:bg-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70">
+                    Read Article
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                </div>
               </div>
-              <h2 className="text-3xl font-bold text-white sm:text-4xl">{featuredBlog.title}</h2>
-              <p className="mt-4 text-lg leading-8 text-slate-300">{featuredBlog.excerpt}</p>
-              <p className="mt-5 rounded-2xl border border-slate-800/80 bg-slate-950/50 px-4 py-3 text-sm leading-7 text-slate-300">
-                <span className="font-semibold text-sky-300">Topic:</span> {featuredBlog.topic}
-              </p>
-              <div className="mt-6 flex items-center justify-between border-t border-slate-800 pt-4">
-                <span className="text-sm text-slate-400">By {featuredBlog.author}</span>
-                <button className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2 text-sm font-semibold text-slate-950 transition hover:bg-sky-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400/70">
-                  Read Article
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-              </div>
-            </div>
-          </GlassCard>
+            </GlassCard>
+          </motion.div>
         </section>
       )}
 
       <section className="px-6 py-10 sm:px-8 lg:px-20 lg:pb-16">
         <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2 xl:grid-cols-3">
           {filteredBlogs.length > 0 ? (
-            filteredBlogs.map((blog) => (
-              <GlassCard key={blog.id} className="flex h-full flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:border-sky-400/30">
-                <div className="relative h-48 overflow-hidden">
-                  <img src={blog.image} alt={blog.title} loading="lazy" className="h-full w-full object-cover transition duration-500 hover:scale-110" />
-                  <span className="absolute right-3 top-3 rounded-full border border-slate-700 bg-slate-900/80 px-3 py-1 text-xs font-semibold capitalize text-sky-300">
-                    {blog.category}
-                  </span>
-                  <span className="absolute left-3 top-3 rounded-full border border-sky-400/20 bg-sky-500/15 px-3 py-1 text-xs font-semibold text-sky-100">
-                    {blog.topic}
-                  </span>
-                </div>
+            filteredBlogs.map((blog, index) => (
+              <motion.div key={blog.id} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.45, delay: index * 0.05 }}>
+                <GlassCard className="flex h-full flex-col overflow-hidden transition duration-300 hover:-translate-y-1 hover:border-sky-400/30">
+                  <div className="relative h-48 overflow-hidden">
+                    <img src={blog.image} alt={blog.title} loading="lazy" className="h-full w-full object-cover transition duration-500 hover:scale-110" />
+                    <span className="absolute right-3 top-3 rounded-full border border-slate-700 bg-slate-900/80 px-3 py-1 text-xs font-semibold capitalize text-sky-300">
+                      {blog.category}
+                    </span>
+                    <span className="absolute left-3 top-3 rounded-full border border-sky-400/20 bg-sky-500/15 px-3 py-1 text-xs font-semibold text-sky-100">
+                      {blog.topic}
+                    </span>
+                  </div>
 
-                <div className="flex flex-1 flex-col p-6">
-                  <div className="mb-3 flex items-center gap-2 text-xs text-slate-400">
-                    <span>{blog.date}</span>
-                    <span>•</span>
-                    <span>{blog.readTime}</span>
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="mb-3 flex items-center gap-2 text-xs text-slate-400">
+                      <span>{blog.date}</span>
+                      <span>•</span>
+                      <span>{blog.readTime}</span>
+                    </div>
+                    <h3 className="text-xl font-semibold text-white">{blog.title}</h3>
+                    <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">{blog.excerpt}</p>
+                    <div className="mt-5 flex items-center justify-between border-t border-slate-800 pt-4">
+                      <span className="text-sm text-slate-400">{blog.author}</span>
+                      <button className="inline-flex items-center gap-1 text-sm font-semibold text-sky-300 transition hover:text-sky-200">
+                        Read More
+                        <ArrowRight className="h-4 w-4" />
+                      </button>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-white">{blog.title}</h3>
-                  <p className="mt-3 flex-1 text-sm leading-7 text-slate-400">{blog.excerpt}</p>
-                  <div className="mt-5 flex items-center justify-between border-t border-slate-800 pt-4">
-                    <span className="text-sm text-slate-400">{blog.author}</span>
-                    <button className="inline-flex items-center gap-1 text-sm font-semibold text-sky-300 transition hover:text-sky-200">
-                      Read More
-                      <ArrowRight className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </GlassCard>
+                </GlassCard>
+              </motion.div>
             ))
           ) : (
             <div className="col-span-full rounded-[1.5rem] border border-slate-800 bg-slate-900/70 py-12 text-center text-slate-400">
@@ -261,7 +271,7 @@ export default function Blogs() {
       </section>
 
       <section className="px-6 py-10 sm:px-8 lg:px-20">
-        <GlassCard className="mx-auto max-w-5xl px-8 py-10 text-center lg:px-12">
+        <GlassCard className="mx-auto max-w-5xl px-8 py-10 text-center transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40 lg:px-12">
           <h3 className="text-2xl font-bold text-white sm:text-3xl">Subscribe for fresh insights</h3>
           <p className="mx-auto mt-3 max-w-2xl text-lg leading-8 text-slate-300">
             Get practical articles and tips on web development, automation, and AI directly in your inbox.
@@ -274,6 +284,6 @@ export default function Blogs() {
           </div>
         </GlassCard>
       </section>
-    </div>
+    </motion.div>
   );
 }

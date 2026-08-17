@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Bot, Code2, Database, Link as LinkIcon, MessageSquareText, Workflow, Zap, Cloud, Layers3, ShieldCheck, Rocket } from 'lucide-react';
 import GlassCard from '../components/GlassCard';
@@ -62,14 +63,15 @@ export default function About() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.45 }} className="min-h-screen bg-slate-950 text-slate-100">
       <section className="relative overflow-hidden px-6 py-20 sm:px-8 lg:px-20 lg:py-28">
+        <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), radial-gradient(rgba(255,255,255,0.01) 1px, transparent 1px)', backgroundSize: '28px 28px, 56px 56px', opacity: 0.04 }} />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.18),_transparent_38%),radial-gradient(circle_at_85%_20%,_rgba(59,130,246,0.16),_transparent_30%)]" />
         <div className="mx-auto max-w-6xl text-center">
           <span className="mb-4 inline-flex rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
             About Me
           </span>
-          <h1 className="text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="text-5xl font-black leading-[0.95] text-white sm:text-6xl lg:text-7xl">
             I create thoughtful digital products that feel{' '}
             <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
               premium and purposeful.
@@ -83,69 +85,75 @@ export default function About() {
 
       <section className="px-6 py-10 sm:px-8 lg:px-20">
         <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {stats.map((stat) => (
-            <GlassCard key={stat.label} className="p-5 text-center">
-              <p className="text-3xl font-bold text-sky-300">{stat.value}</p>
-              <p className="mt-2 text-sm text-slate-400">{stat.label}</p>
-            </GlassCard>
+          {stats.map((stat, index) => (
+            <motion.div key={stat.label} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.45, delay: index * 0.05 }}>
+              <GlassCard className="h-full p-5 text-center transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40">
+                <p className="text-3xl font-bold text-sky-300">{stat.value}</p>
+                <p className="mt-2 text-sm text-slate-400">{stat.label}</p>
+              </GlassCard>
+            </motion.div>
           ))}
         </div>
       </section>
 
       <section className="px-6 py-16 sm:px-8 lg:px-20">
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <GlassCard className="p-8 lg:p-10">
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">My Approach</p>
-            <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">Built around clarity, speed, and long-term value</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-300">
-              Every project starts with understanding the user, the goal, and the story behind the brand. That allows me to create interfaces that feel effortless while remaining strong technically.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">React</span>
-              <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">Tailwind CSS</span>
-              <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">UI/UX</span>
-              <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">Automation</span>
-            </div>
-          </GlassCard>
+          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.5 }}>
+            <GlassCard className="h-full p-8 transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40 lg:p-10">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">My Approach</p>
+              <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">Built around clarity, speed, and long-term value</h2>
+              <p className="mt-5 text-lg leading-8 text-slate-300">
+                Every project starts with understanding the user, the goal, and the story behind the brand. That allows me to create interfaces that feel effortless while remaining strong technically.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">React</span>
+                <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">Tailwind CSS</span>
+                <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">UI/UX</span>
+                <span className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-sm text-slate-300">Automation</span>
+              </div>
+            </GlassCard>
+          </motion.div>
 
-          <GlassCard className="p-6">
-            <div className="flex flex-wrap gap-3">
-              <button
-                onClick={() => setActiveTab('mission')}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                  activeTab === 'mission' ? 'bg-sky-500 text-slate-950' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                }`}
-              >
-                Mission
-              </button>
-              <button
-                onClick={() => setActiveTab('vision')}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
-                  activeTab === 'vision' ? 'bg-sky-500 text-slate-950' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-                }`}
-              >
-                Vision
-              </button>
-            </div>
+          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.5, delay: 0.05 }}>
+            <GlassCard className="h-full p-6 transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40">
+              <div className="flex flex-wrap gap-3">
+                <button
+                  onClick={() => setActiveTab('mission')}
+                  className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                    activeTab === 'mission' ? 'bg-sky-500 text-slate-950' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                  }`}
+                >
+                  Mission
+                </button>
+                <button
+                  onClick={() => setActiveTab('vision')}
+                  className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                    activeTab === 'vision' ? 'bg-sky-500 text-slate-950' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                  }`}
+                >
+                  Vision
+                </button>
+              </div>
 
-            <div className="mt-6 rounded-2xl border border-slate-800 bg-slate-900/80 p-5">
-              {activeTab === 'mission' ? (
-                <>
-                  <h3 className="text-xl font-semibold text-white">Empowering better digital experiences</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-400">
-                    My mission is to turn complex ideas into simple, beautiful, and high-performing experiences that genuinely help people and businesses.
-                  </p>
-                </>
-              ) : (
-                <>
-                  <h3 className="text-xl font-semibold text-white">Designing smarter digital futures</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-400">
-                    I envision a future where modern websites and automation tools feel effortless, accessible, and deeply connected to real business goals.
-                  </p>
-                </>
-              )}
-            </div>
-          </GlassCard>
+              <div className="mt-6 rounded-2xl border border-slate-800 bg-slate-900/80 p-5">
+                {activeTab === 'mission' ? (
+                  <>
+                    <h3 className="text-xl font-semibold text-white">Empowering better digital experiences</h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-400">
+                      My mission is to turn complex ideas into simple, beautiful, and high-performing experiences that genuinely help people and businesses.
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="text-xl font-semibold text-white">Designing smarter digital futures</h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-400">
+                      I envision a future where modern websites and automation tools feel effortless, accessible, and deeply connected to real business goals.
+                    </p>
+                  </>
+                )}
+              </div>
+            </GlassCard>
+          </motion.div>
         </div>
       </section>
 
@@ -159,17 +167,19 @@ export default function About() {
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {values.map((value) => {
+            {values.map((value, index) => {
               const Icon = value.icon;
 
               return (
-                <GlassCard key={value.title} className="p-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-300">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-4 text-xl font-semibold text-white">{value.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-slate-400">{value.text}</p>
-                </GlassCard>
+                <motion.div key={value.title} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.45, delay: index * 0.07 }}>
+                  <GlassCard className="h-full p-6 transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-300">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-4 text-xl font-semibold text-white">{value.title}</h3>
+                    <p className="mt-3 text-sm leading-7 text-slate-400">{value.text}</p>
+                  </GlassCard>
+                </motion.div>
               );
             })}
           </div>
@@ -186,17 +196,19 @@ export default function About() {
           />
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {skills.map((skill) => {
+            {skills.map((skill, index) => {
               const Icon = skill.icon;
 
               return (
-                <GlassCard key={skill.label} className="p-5">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-500/20 bg-sky-500/10 text-sky-300">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-white">{skill.label}</h3>
-                  <p className="mt-2 text-sm leading-7 text-slate-400">{skill.detail}</p>
-                </GlassCard>
+                <motion.div key={skill.label} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.45, delay: index * 0.05 }}>
+                  <GlassCard className="h-full p-5 transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-500/20 bg-sky-500/10 text-sky-300">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-4 text-lg font-semibold text-white">{skill.label}</h3>
+                    <p className="mt-2 text-sm leading-7 text-slate-400">{skill.detail}</p>
+                  </GlassCard>
+                </motion.div>
               );
             })}
           </div>
@@ -213,21 +225,23 @@ export default function About() {
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {testimonials.map((testimonial) => (
-              <GlassCard key={testimonial.name} className="p-6">
-                <p className="text-sm leading-7 text-slate-300">“{testimonial.quote}”</p>
-                <div className="mt-5 border-t border-slate-800 pt-4">
-                  <h3 className="font-semibold text-white">{testimonial.name}</h3>
-                  <p className="text-xs uppercase tracking-[0.24em] text-slate-500">{testimonial.role}</p>
-                </div>
-              </GlassCard>
+            {testimonials.map((testimonial, index) => (
+              <motion.div key={testimonial.name} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.45, delay: index * 0.07 }}>
+                <GlassCard className="h-full p-6 transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40">
+                  <p className="text-sm leading-7 text-slate-300">“{testimonial.quote}”</p>
+                  <div className="mt-5 border-t border-slate-800 pt-4">
+                    <h3 className="font-semibold text-white">{testimonial.name}</h3>
+                    <p className="text-xs uppercase tracking-[0.24em] text-slate-500">{testimonial.role}</p>
+                  </div>
+                </GlassCard>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       <section className="px-6 py-16 sm:px-8 lg:px-20">
-        <GlassCard className="mx-auto max-w-5xl px-8 py-12 text-center lg:px-12">
+        <GlassCard className="mx-auto max-w-5xl px-8 py-12 text-center transition-transform duration-300 hover:-translate-y-1 hover:border-sky-400/40 lg:px-12">
           <h2 className="text-3xl font-bold text-white sm:text-4xl">Ready to build something exceptional?</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-slate-300">
             Let’s turn your ideas into a portfolio or website that feels modern, trusted, and memorable.
@@ -242,6 +256,6 @@ export default function About() {
           </div>
         </GlassCard>
       </section>
-    </div>
+    </motion.div>
   );
 }

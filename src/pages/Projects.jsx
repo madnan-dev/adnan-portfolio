@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -6,58 +7,39 @@ export default function Projects() {
   const projectsData = [
     {
       id: 1,
-      title: 'Gmail Inbox Automation Dashboard',
+      title: 'Facebook Post Auto-Scheduler using Buffer API',
       category: 'automation',
-      description: 'A polished command center for managing client communication, replies, and workflow visibility in one place.',
-      tags: ['n8n', 'React', 'Gmail API', 'Webhooks'],
-      image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=80',
+      description:
+        'Automates Facebook post scheduling with Buffer API so social content can be prepared and published in a controlled workflow.',
+      tags: ['Buffer API', 'Facebook', 'n8n', 'Automation'],
+      image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&auto=format&fit=crop&q=80',
       featured: true,
       demoLink: '#',
-      githubLink: '#',
+      githubLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/01-FbPage-post-scheduler',
     },
     {
       id: 2,
-      title: 'Medical Appointment & Advisor Portal',
-      category: 'web',
-      description: 'A modern booking experience built to guide users smoothly from discovery to scheduling.',
-      tags: ['React', 'Tailwind CSS', 'n8n', 'Node.js'],
-      image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&auto=format&fit=crop&q=80',
+      title: 'Smart-Document-Classifier',
+      category: 'automation',
+      description:
+        'Classifies incoming documents into the right category to reduce manual sorting and speed up document processing.',
+      tags: ['Document AI', 'Classification', 'n8n', 'Workflow'],
+      image: 'https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?w=600&auto=format&fit=crop&q=80',
       featured: false,
       demoLink: '#',
-      githubLink: '#',
+      githubLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/02-Smart-Document-Classifier',
     },
     {
       id: 3,
-      title: 'Buffer Social Media Auto-Poster',
+      title: 'Serper Search Scraper',
       category: 'automation',
-      description: 'A scalable pipeline for publishing, authentication, and multi-step social content automation.',
-      tags: ['Buffer API', 'GraphQL', 'n8n', 'Webhooks'],
-      image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=600&auto=format&fit=crop&q=80',
+      description:
+        'Scrapes search results with Serper to collect structured search data for downstream automation and analysis.',
+      tags: ['Serper', 'Search Scraping', 'n8n', 'Data Extraction'],
+      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&auto=format&fit=crop&q=80',
       featured: false,
       demoLink: '#',
-      githubLink: '#',
-    },
-    {
-      id: 4,
-      title: 'Agentic AI Customer Assistant',
-      category: 'ai',
-      description: 'An intelligent assistant that routes requests and makes smart workflow decisions with context.',
-      tags: ['Agentic AI', 'LLM', 'Python', 'Tailwind'],
-      image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?w=600&auto=format&fit=crop&q=80',
-      featured: false,
-      demoLink: '#',
-      githubLink: '#',
-    },
-    {
-      id: 5,
-      title: 'Client Acquisition Portfolio',
-      category: 'web',
-      description: 'A sleek, modern portfolio designed to showcase strategy, design, and technical execution clearly.',
-      tags: ['React', 'Tailwind CSS', 'Vite'],
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&auto=format&fit=crop&q=80',
-      featured: false,
-      demoLink: '#',
-      githubLink: '#',
+      githubLink: 'https://github.com/madnan-dev/n8n-automation-workflows/tree/main/03-serper-search-scraper',
     },
   ];
 
@@ -65,14 +47,15 @@ export default function Projects() {
   const featuredProject = projectsData.find((project) => project.featured);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.45 }} className="min-h-screen bg-slate-950 text-slate-100">
       <section className="relative overflow-hidden px-6 py-20 sm:px-8 lg:px-20 lg:py-28">
+        <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), radial-gradient(rgba(255,255,255,0.01) 1px, transparent 1px)', backgroundSize: '28px 28px, 56px 56px', opacity: 0.04 }} />
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.18),_transparent_38%),radial-gradient(circle_at_85%_20%,_rgba(59,130,246,0.16),_transparent_30%)]" />
         <div className="mx-auto max-w-6xl text-center">
           <span className="mb-4 inline-flex rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">
             Projects
           </span>
-          <h1 className="text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="text-5xl font-black leading-[0.95] text-white sm:text-6xl lg:text-7xl">
             A showcase of{' '}
             <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
               impactful digital work.
@@ -102,7 +85,7 @@ export default function Projects() {
 
       {featuredProject && activeFilter === 'all' && (
         <section className="px-6 py-6 sm:px-8 lg:px-20">
-          <div className="mx-auto grid max-w-6xl gap-8 rounded-[2rem] border border-slate-800 bg-slate-900/70 p-8 shadow-2xl shadow-slate-950/40 lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
+          <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.45 }} className="mx-auto grid max-w-6xl gap-8 rounded-[2rem] border border-slate-800 bg-slate-900/70 p-8 shadow-2xl shadow-slate-950/40 lg:grid-cols-[1.05fr_0.95fr] lg:p-10">
             <div>
               <p className="text-sm font-semibold uppercase tracking-[0.3em] text-sky-300">Featured Project</p>
               <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">{featuredProject.title}</h2>
@@ -116,18 +99,22 @@ export default function Projects() {
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-[1.5rem] border border-slate-800">
+            <div className="overflow-hidden rounded-[1.5rem] border border-slate-800 bg-slate-950">
               <img src={featuredProject.image} alt={featuredProject.title} className="h-full w-full object-cover transition duration-500 hover:scale-105" />
             </div>
-          </div>
+          </motion.div>
         </section>
       )}
 
       <section className="px-6 py-10 sm:px-8 lg:px-20 lg:pb-16">
         <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {filteredProjects.map((project) => (
-            <div
+          {filteredProjects.map((project, index) => (
+            <motion.div
               key={project.id}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: index * 0.05 }}
               className="flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-slate-800 bg-slate-900/70 transition duration-300 hover:-translate-y-1 hover:border-sky-500/40"
             >
               <div className="relative h-52 overflow-hidden">
@@ -168,10 +155,10 @@ export default function Projects() {
                   </a>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 }

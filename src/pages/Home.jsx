@@ -109,7 +109,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
+    <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.45 }} className="min-h-screen bg-slate-950 text-slate-100">
       <section className="relative overflow-hidden px-6 py-16 sm:px-8 lg:px-20 lg:py-24">
         <motion.div
           aria-hidden="true"
@@ -130,6 +130,7 @@ export default function Home() {
             transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
           />
         </motion.div>
+        <div aria-hidden className="absolute inset-0 pointer-events-none" style={{ backgroundImage: 'radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), radial-gradient(rgba(255,255,255,0.01) 1px, transparent 1px)', backgroundSize: '28px 28px, 56px 56px', opacity: 0.04 }} />
 
         <div className="section-shell grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <motion.div
@@ -139,7 +140,7 @@ export default function Home() {
             className="max-w-2xl"
           >
             <p className="section-kicker text-sky-300">AI Automation Engineer / n8n Workflow Developer</p>
-            <h1 className="section-title mt-4 text-5xl text-white sm:text-6xl xl:text-7xl">
+            <h1 className="section-title mt-4 text-6xl text-white sm:text-7xl xl:text-8xl leading-tight">
               I build automation systems that make businesses move faster and look sharper.
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300 sm:text-xl">
@@ -169,16 +170,72 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              {metrics.map((metric, index) => (
-                <GlassCard key={metric.label} className="p-5">
-                  <p className="text-3xl font-semibold text-white sm:text-4xl">
-                    {counts[index]}
-                    {metric.suffix}
-                  </p>
-                  <p className="mt-2 text-sm text-slate-400">{metric.label}</p>
-                </GlassCard>
-              ))}
+            <div className="mt-10">
+              <div className="grid grid-cols-6 gap-4">
+                <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.5 }} className="col-span-4 row-span-2">
+                  <GlassCard className="h-full p-6 transition-transform hover:-translate-y-1 hover:border-sky-400/40">
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">Current Focus</p>
+                    <h3 className="mt-3 text-2xl font-bold text-white">Highlights</h3>
+                    <div className="mt-4 grid gap-3">
+                      {metrics.map((metric, index) => (
+                        <div key={metric.label} className="rounded-md bg-slate-900/50 p-3 border border-slate-800">
+                          <p className="text-2xl font-semibold text-white">{counts[index]}{metric.suffix}</p>
+                          <p className="mt-1 text-sm text-slate-400">{metric.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </GlassCard>
+                </motion.div>
+
+                <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.55, delay: 0.05 }} className="col-span-2">
+                  <GlassCard className="h-full p-6 transition-transform hover:-translate-y-1 hover:border-sky-400/40">
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">Services</p>
+                    <h4 className="mt-2 text-lg font-semibold text-white">Selected</h4>
+                    <div className="mt-4 grid gap-3">
+                      {services.slice(0, 3).map((s) => (
+                        <div key={s.title} className="flex items-center gap-3">
+                          <div className="h-9 w-9 rounded-2xl bg-sky-500/10 text-sky-300 flex items-center justify-center"><s.icon className="h-4 w-4" /></div>
+                          <p className="text-sm text-slate-300">{s.title}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </GlassCard>
+                </motion.div>
+
+                <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.6, delay: 0.08 }} className="col-span-2 row-span-1">
+                  <GlassCard className="h-full p-6 transition-transform hover:-translate-y-1 hover:border-sky-400/40">
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">Workflow Preview</p>
+                    <h4 className="mt-2 text-lg font-semibold text-white">Pipeline</h4>
+                    <div className="mt-4 space-y-3 text-sm text-slate-300">
+                      {workflowNodes.map((n) => (
+                        <div key={n.title} className="flex items-start gap-3">
+                          <div className="mt-1 h-8 w-8 rounded-2xl bg-slate-900/60 flex items-center justify-center text-sky-300"><n.icon className="h-4 w-4" /></div>
+                          <div>
+                            <p className="font-semibold text-white text-sm">{n.title}</p>
+                            <p className="text-xs text-slate-400">{n.detail}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </GlassCard>
+                </motion.div>
+
+                <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.25 }} transition={{ duration: 0.65, delay: 0.1 }} className="col-span-4">
+                  <GlassCard className="h-full p-6 transition-transform hover:-translate-y-1 hover:border-sky-400/40">
+                    <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-300">How I work</p>
+                    <h4 className="mt-2 text-lg font-semibold text-white">Process</h4>
+                    <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                      {process.map((p) => (
+                        <div key={p.step} className="rounded-md border border-slate-800/60 bg-slate-900/50 p-3">
+                          <p className="text-xs font-semibold text-sky-300">{p.step}</p>
+                          <p className="mt-1 font-semibold text-white">{p.title}</p>
+                          <p className="mt-1 text-xs text-slate-400">{p.text}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </GlassCard>
+                </motion.div>
+              </div>
             </div>
           </motion.div>
 
@@ -393,6 +450,6 @@ export default function Home() {
           </GlassCard>
         </div>
       </section>
-    </div>
+    </motion.div>
   );
 }
